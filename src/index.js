@@ -1,7 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Index from './pages/index';
+import { render } from 'react-dom';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import routes from './routes';
+import App from "./pages/App"
 import registerServiceWorker from './registerServiceWorker';
+import './styles.scss';
+require('./favicon.ico');
 
-ReactDOM.render(<Index />, document.querySelector('#root'));
+
+// import 'font-awesome/css/font-awesome.css';
+// import 'flexboxgrid/css/flexboxgrid.css';
+
+render(
+  // <Router>{routes}</Router>, document.getElementById('root')
+  <Router><App /></Router>, document.getElementById('root')
+);
 registerServiceWorker();
+
