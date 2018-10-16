@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import {white, purple600, purple500} from '@material-ui/core/colors';
 import {LineChart, Line, ResponsiveContainer} from 'recharts';
-import {typography} from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 
 const NewOrders = (props) => {
 
@@ -18,7 +18,7 @@ const NewOrders = (props) => {
     },
     header: {
       fontSize: 24,
-      fontWeight: typography.fontWeightLight,
+      fontWeight: Typography.fontWeightLight,
       color: white,
       backgroundColor: purple600,
       padding: 10,

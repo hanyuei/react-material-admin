@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import {white, grey800} from '@material-ui/core/colors';
-import {typography} from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 
 class InfoBox extends React.Component {
 
@@ -17,13 +17,13 @@ class InfoBox extends React.Component {
       },
       number: {
         display: 'block',
-        fontWeight: typography.fontWeightMedium,
+        fontWeight: Typography.fontWeightMedium,
         fontSize: 18,
         color: grey800
       },
       text: {
         fontSize: 20,
-        fontWeight: typography.fontWeightLight,
+        fontWeight: Typography.fontWeightLight,
         color: grey800
       },
       iconSpan: {

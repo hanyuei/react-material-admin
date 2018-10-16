@@ -1,6 +1,9 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Index from './pages/index';
+import Dashboard from "./pages/DashboardPage";
+import Login from "./pages/LoginPage";
+
 // import NotFoundPage from './containers/NotFoundPage';
 // import LoginPage from './containers/LoginPage';
 // import FormPage from './containers/FormPage';
@@ -8,22 +11,25 @@ import Index from './pages/index';
 // import Dashboard from './containers/DashboardPage';
 
 // export default (
-  // <Route>
-  //   <Route path="login" component={LoginPage}/>
-  //   <Route path="/" component={App}>
-  //     <IndexRoute component={Dashboard}/>
-  //     <Route path="dashboard" component={Dashboard}/>
-  //     <Route path="form" component={FormPage}/>
-  //     <Route path="table" component={TablePage}/>
-  //     <Route path="*" component={NotFoundPage}/>
-  //   </Route>
-  // </Route>
+//   <Route>
+//     <Route path="login" component={LoginPage}/>
+//     <Route path="/" component={App}>
+//       <IndexRoute component={Dashboard}/>
+//       <Route path="dashboard" component={Dashboard}/>
+//       <Route path="form" component={FormPage}/>
+//       <Route path="table" component={TablePage}/>
+//       <Route path="*" component={NotFoundPage}/>
+//     </Route>
+//   </Route>
 // );
 
 
 export default (
-  <Route>
-    <Route path="/" component={Index}>
-    </Route>
-  </Route>
+  <Router>
+    <div>
+      <h1 >Hello world</h1>
+      <Route exact path="/" component={Index}/>
+      <Route exact path="/login" component={Login}/>
+    </div>
+  </Router>
 )

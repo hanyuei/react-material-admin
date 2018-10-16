@@ -14,7 +14,8 @@ const themeDefault = createMuiTheme({
   },
   raisedButton: {
     primaryColor: blue600,
-  }
+  },
+  useNextVariants: true,
 });
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Drawer from '@material-ui/core/Drawer';
-// import {spacing, typography} from '@material-ui/core';
+// import {spacing, Typography} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import {white, blue600} from '@material-ui/core/colors';
 import MenuItem from '@material-ui/core/MenuItem';
