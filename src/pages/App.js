@@ -7,7 +7,7 @@ import LeftDrawer from '../components/LeftDrawer';
 import withWidth, {LARGE, SMALL} from '@material-ui/core/withWidth';
 import ThemeDefault from '../theme-default';
 import Data from '../data';
-import Dashboard from './DashboardPage'
+import Dashboard from './DashboardPage';
 
 class App extends React.Component {
 
@@ -15,7 +15,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       navDrawerOpen: false
-    };DashboardPage
+    };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -25,6 +25,7 @@ class App extends React.Component {
   }
 
   handleChangeRequestNavDrawer() {
+    console.log("this.state.navDrawerOpen new: ", !this.state.navDrawerOpen)
     this.setState({
       navDrawerOpen: !this.state.navDrawerOpen
     });
@@ -32,7 +33,7 @@ class App extends React.Component {
 
   render() {
     let { navDrawerOpen } = this.state;
-    const paddingLeftDrawerOpen = 236;
+    const paddingLeftDrawerOpen = 240;
 
     const styles = {
       header: {

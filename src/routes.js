@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Index from './pages/index';
-import Dashboard from "./pages/DashboardPage";
+import App from './pages/App';
 import Login from "./pages/LoginPage";
 
 // import NotFoundPage from './containers/NotFoundPage';
@@ -27,8 +26,7 @@ import Login from "./pages/LoginPage";
 export default (
   <Router>
     <div>
-      <h1 >Hello world</h1>
-      <Route exact path="/" component={Index}/>
+      <Route exact path="/" component={App}/>
       <Route exact path="/login" component={Login}/>
     </div>
   </Router>

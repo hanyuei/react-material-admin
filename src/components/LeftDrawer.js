@@ -47,11 +47,13 @@ const LeftDrawer = (props) => {
       }
     }
   };
-
+  const drawerWidth = 240;
+  
   return (
-    <Drawer
-      docked={true}
-      open={navDrawerOpen}>
+    <Drawer docked={true} open={navDrawerOpen} variant="persistent" style={{
+      position: 'relative',
+      width: drawerWidth,
+    }}>
         <div style={styles.logo}>
           Material Admin
         </div>
