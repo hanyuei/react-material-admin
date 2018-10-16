@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import routes from './routes';
-import App from "./pages/App"
+import App from "./pages/index"
 import registerServiceWorker from './registerServiceWorker';
 import './styles.scss';
 require('./favicon.ico');

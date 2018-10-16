@@ -1,72 +1,69 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogActions from '@material-ui/core/DialogActions';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
-import withRoot from '../withRoot';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import Header from '../components/Header';
+import LeftDrawer from '../components/LeftDrawer';
+import withWidth, {LARGE, SMALL} from '@material-ui/core/withWidth';
+import ThemeDefault from '../theme-default';
+import Data from '../data';
 
-const styles = theme => ({
-  root: {
-    textAlign: 'center',
-    paddingTop: theme.spacing.unit * 20,
-  },
-});
+class App extends React.Component {
 
-class Index extends React.Component {
-  state = {
-    open: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      navDrawerOpen: false
+    };
+  }
 
-  handleClose = () => {
+  componentWillReceiveProps(nextProps) {
+    if (this.props.width !== nextProps.width) {
+      this.setState({navDrawerOpen: nextProps.width === LARGE});
+    }
+  }
+
+  handleChangeRequestNavDrawer() {
     this.setState({
-      open: false,
+      navDrawerOpen: !this.state.navDrawerOpen
     });
-  };
-
-  handleClick = () => {
-    this.setState({
-      open: true,
-    });
-  };
+  }
 
   render() {
-    const { classes } = this.props;
-    const { open } = this.state;
+    let { navDrawerOpen } = this.state;
+    const paddingLeftDrawerOpen = 236;
+
+    const styles = {
+      header: {
+        paddingLeft: navDrawerOpen ? paddingLeftDrawerOpen : 0
+      },
+      container: {
+        margin: '80px 20px 20px 15px',
+        paddingLeft: navDrawerOpen && this.props.width !== SMALL ? paddingLeftDrawerOpen : 0
+      }
+    };
 
     return (
-      <div className={classes.root}>
-        <Dialog open={open} onClose={this.handleClose}>
-          <DialogTitle>Super Secret Password</DialogTitle>
-          <DialogContent>
-            <DialogContentText>1-2-3-4-5</DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button color="primary" onClick={this.handleClose}>
-              OK
-            </Button>
-          </DialogActions>
-        </Dialog>
-        <Typography variant="h4" gutterBottom>
-          Material-UI
-        </Typography>
-        <Typography variant="subtitle1" gutterBottom>
-          example project
-        </Typography>
-        <Button variant="contained" color="secondary" onClick={this.handleClick}>
-          Super Secret Password
-        </Button>
-      </div>
+      <MuiThemeProvider muiTheme={ThemeDefault}>
+        <div>
+          <Header styles={styles.header}
+                  handleChangeRequestNavDrawer={this.handleChangeRequestNavDrawer.bind(this)}/>
+
+            <LeftDrawer navDrawerOpen={navDrawerOpen}
+                        menus={Data.menus}
+                        username="User Admin"/>
+
+            <div style={styles.container}>
+              {this.props.children}
+            </div>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
 
-Index.propTypes = {
-  classes: PropTypes.object.isRequired,
+App.propTypes = {
+  children: PropTypes.element,
+  width: PropTypes.number
 };
 
-export default withRoot(withStyles(styles)(Index));
+export default withWidth()(App);
