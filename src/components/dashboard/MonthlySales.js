@@ -21,7 +21,8 @@ const MonthlySales = (props) => {
     header: {
       color: 'white',
       backgroundColor: pink[500],
-      padding: 10
+      padding: 10,
+      fontSize: 24,
     }
   };
 
