@@ -9,6 +9,8 @@ import ThemeDefault from '../theme-default';
 import Data from '../data';
 import Dashboard from './DashboardPage';
 import Form from "./FormPage";
+import Table from "./TablePage";
+import NotFound from "./NotFoundPage";
 
 class App extends React.Component {
 
@@ -61,6 +63,8 @@ class App extends React.Component {
             <Route exact path="/" component={Dashboard}/>
             <Route path="/dashboard" component={Dashboard}/>
             <Route path="/form" component={Form}/>
+            <Route path="/table" component={Table}/>
+            <Route component={NotFound}/>
           </div>
         </div>
         
