@@ -3,10 +3,11 @@ import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
-import {grey500, white} from '@material-ui/core/colors';
+import {grey, white} from '@material-ui/core/colors';
 import PersonAdd from '@material-ui/icons/PersonAdd';
 import Help from '@material-ui/icons/Help';
 import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import {Link} from 'react-router-dom';
 import ThemeDefault from '../theme-default';
 
@@ -32,7 +33,8 @@ const LoginPage = () => {
       padding: 10
     },
     flatButton: {
-      color: grey500
+      color: grey[500],
+      margin: 5
     },
     checkRemember: {
       style: {
@@ -41,12 +43,12 @@ const LoginPage = () => {
         paddingTop: 5
       },
       labelStyle: {
-        color: grey500
+        color: grey[500]
       },
       iconStyle: {
-        color: grey500,
-        borderColor: grey500,
-        fill: grey500
+        color: grey[500],
+        borderColor: grey[500],
+        fill: grey[500]
       }
     },
     loginBtn: {
@@ -81,28 +83,32 @@ const LoginPage = () => {
             <form>
               <TextField
                 hintText="E-mail"
-                floatingLabelText="E-mail"
+                label="E-mail"
                 fullWidth={true}
               />
               <TextField
                 hintText="Password"
-                floatingLabelText="Password"
+                label="Password"
                 fullWidth={true}
                 type="password"
               />
 
-              <div>
-                <Checkbox
+              <div style={{marginTop: 10}}>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                          label="Remember me"
+                          style={styles.checkRemember.style}
+                          labelStyle={styles.checkRemember.labelStyle}
+                          iconStyle={styles.checkRemember.iconStyle}
+                        />
+                  }
                   label="Remember me"
-                  style={styles.checkRemember.style}
-                  labelStyle={styles.checkRemember.labelStyle}
-                  iconStyle={styles.checkRemember.iconStyle}
                 />
-
                 <Link to="/">
-                  <Button variant="contained" label="Login"
-                                primary={true}
-                                style={styles.loginBtn}/>
+                  <Button variant="contained"  color="primary" style={styles.loginBtn}>
+                    Login
+                  </Button>
                 </Link>
               </div>
             </form>
@@ -110,18 +116,20 @@ const LoginPage = () => {
 
           <div style={styles.buttonsDiv}>
             <Button
-              label="Register"
               href="/"
               style={styles.flatButton}
-              icon={<PersonAdd />}
-            />
+            >
+            <PersonAdd />
+            <span style={{margin: 5}}>Register</span>
+            </Button>
 
             <Button
-              label="Forgot Password?"
               href="/"
               style={styles.flatButton}
-              icon={<Help />}
-            />
+            >
+            <Help />
+            <span style={{margin: 5}}>Forgot Password?</span>
+            </Button>
           </div>
 
           <div style={styles.buttonsDiv}>

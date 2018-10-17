@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import Header from '../components/Header';
@@ -60,11 +60,13 @@ class App extends React.Component {
 
           <div style={styles.container}>
             {/* {this.props.children} */}
-            <Route exact path="/" component={Dashboard}/>
-            <Route path="/dashboard" component={Dashboard}/>
-            <Route path="/form" component={Form}/>
-            <Route path="/table" component={Table}/>
-            <Route component={NotFound}/>
+            <Switch>
+              <Route exact path="/" component={Dashboard}/>
+              <Route path="/dashboard" component={Dashboard}/>
+              <Route path="/form" component={Form}/>
+              <Route path="/table" component={Table}/>
+              <Route component={NotFound}/>
+            </Switch>
           </div>
         </div>
         
