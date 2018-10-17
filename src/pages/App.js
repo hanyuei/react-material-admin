@@ -14,7 +14,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      navDrawerOpen: false
+      navDrawerOpen: true
     };
   }
 
@@ -46,20 +46,20 @@ class App extends React.Component {
     };
 
     return (
-      <MuiThemeProvider muiTheme={ThemeDefault}>
+      <MuiThemeProvider theme={ThemeDefault}>
         <div>
           <Header styles={styles.header}
                   handleChangeRequestNavDrawer={this.handleChangeRequestNavDrawer.bind(this)}/>
 
-            <LeftDrawer navDrawerOpen={navDrawerOpen}
-                        menus={Data.menus}
-                        username="User Admin"/>
+          <LeftDrawer navDrawerOpen={navDrawerOpen}
+                      menus={Data.menus}
+                      username="User Admin"/>
 
-            <div style={styles.container}>
-              {/* {this.props.children} */}
-              <Route exact path="/" component={Dashboard}/>
-              <Route path="/dashboard" component={Dashboard}/>
-            </div>
+          <div style={styles.container}>
+            {/* {this.props.children} */}
+            <Route exact path="/" component={Dashboard}/>
+            <Route path="/dashboard" component={Dashboard}/>
+          </div>
         </div>
       </MuiThemeProvider>
     );
