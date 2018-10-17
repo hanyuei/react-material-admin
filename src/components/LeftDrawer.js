@@ -7,10 +7,18 @@ import {white, blue600} from '@material-ui/core/colors';
 import MenuItem from '@material-ui/core/MenuItem';
 import {Link} from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
+import { withStyles } from '@material-ui/core/styles';
+
+const drawerWidth = 240;
+const drawStyles = theme => ({
+  drawerPaper: {
+    width: drawerWidth,
+  }
+})
 
 const LeftDrawer = (props) => {
-  let { navDrawerOpen } = props;
-
+  let { navDrawerOpen, classes } = props;
+  
   const styles = {
     logo: {
       cursor: 'pointer',
@@ -47,18 +55,18 @@ const LeftDrawer = (props) => {
       }
     }
   };
-  const drawerWidth = 240;
-  
+
   return (
-    <Drawer docked={true} open={navDrawerOpen} variant="persistent" style={{
-      position: 'relative',
-      width: drawerWidth,
-    }}>
+    <Drawer docked={true} open={navDrawerOpen} variant="persistent" 
+      classes={{
+        paper: classes.drawerPaper,
+      }}
+    >
         <div style={styles.logo}>
           Material Admin
         </div>
         <div style={styles.avatar.div}>
-          <Avatar src="http://www.@material-ui/core.com/images/uxceo-128.jpg"
+          <Avatar src="https://material-ui.com/static/images/uxceo-128.jpg"
                   size={50}
                   style={styles.avatar.icon}/>
           <span style={styles.avatar.span}>{props.username}</span>
@@ -84,4 +92,5 @@ LeftDrawer.propTypes = {
   username: PropTypes.string,
 };
 
-export default LeftDrawer;
+// export default LeftDrawer;
+export default withStyles(drawStyles, { withTheme: true })(LeftDrawer);
