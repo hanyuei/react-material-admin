@@ -8,6 +8,7 @@ import withWidth, {LARGE, SMALL} from '@material-ui/core/withWidth';
 import ThemeDefault from '../theme-default';
 import Data from '../data';
 import Dashboard from './DashboardPage';
+import Form from "./FormPage";
 
 class App extends React.Component {
 
@@ -59,8 +60,10 @@ class App extends React.Component {
             {/* {this.props.children} */}
             <Route exact path="/" component={Dashboard}/>
             <Route path="/dashboard" component={Dashboard}/>
+            <Route path="/form" component={Form}/>
           </div>
         </div>
+        
       </MuiThemeProvider>
     );
   }

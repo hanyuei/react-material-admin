@@ -26,8 +26,8 @@ import Login from "./pages/LoginPage";
 export default (
   <Router>
     <div>
-      <Route exact path="/" component={App}/>
       <Route exact path="/login" component={Login}/>
+      <Route path="/" component={App}/>
     </div>
   </Router>
 )
