@@ -5,6 +5,7 @@ import {PieChart, Pie, Cell, ResponsiveContainer} from 'recharts';
 import Avatar from '@material-ui/core/Avatar';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import Grid from '@material-ui/core/Grid';
 import GlobalStyles from '../../styles.scss';
 
 const BrowserUsage = (props) => {
@@ -29,9 +30,8 @@ const BrowserUsage = (props) => {
 
       <div style={GlobalStyles.clear}/>
 
-      <div className="row">
-
-        <div className="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+      <Grid container spacing={24}>
+        <Grid item xs={12} sm={8}>
           <div style={styles.pieChartDiv}>
             <ResponsiveContainer>
               <PieChart >
@@ -47,27 +47,27 @@ const BrowserUsage = (props) => {
               </PieChart>
             </ResponsiveContainer>
           </div>
-        </div>
-
-        <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        </Grid>
+        <Grid item xs={12} sm={4}>
           <div style={styles.legend}>
             <div style={styles.legend}>
               <List>
                 {props.data.map((item) =>
                   <ListItem
-                    key={item.name}
-                    leftAvatar={
-                      <Avatar icon={item.icon}
-                              backgroundColor={item.color}/>
-                    }>
+                    key={item.name}>
+                  <Avatar style={{backgroundColor: item.color, marginRight: '10px'}}> 
+                    {item.icon}
+                  </Avatar>
+                            
                     {item.name}
                   </ListItem>
                 )}
               </List>
             </div>
           </div>
-        </div>
-      </div>
+        </Grid>
+      </Grid>
+
     </Paper>
   );
 };

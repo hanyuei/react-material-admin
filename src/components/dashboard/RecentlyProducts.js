@@ -9,7 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import IconMenu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import { grey400, cyan600, pink600, white } from '@material-ui/core/colors';
+import { grey, cyan, pink } from '@material-ui/core/colors';
 import Typography from '@material-ui/core/Typography';
 import Wallpaper from '@material-ui/icons/Wallpaper';
 
@@ -19,8 +19,8 @@ const RecentlyProducts = (props) => {
     subheader: {
       fontSize: 24,
       fontWeight: Typography.fontWeightLight,
-      backgroundColor: cyan600,
-      color: white
+      backgroundColor: cyan[600],
+      color: 'white'
     }
   };
 
@@ -29,7 +29,7 @@ const RecentlyProducts = (props) => {
       touch={true}
       tooltipPosition="bottom-left"
     >
-      <MoreVertIcon color={grey400} />
+      <MoreVertIcon color={grey[400]} />
     </IconButton>
   );
 

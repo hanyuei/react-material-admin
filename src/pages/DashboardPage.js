@@ -1,5 +1,5 @@
 import React from 'react';
-import {cyan600, pink600, purple600, orange600} from '@material-ui/core/colors';
+import {cyan, pink, purple, orange} from '@material-ui/core/colors';
 import Assessment from '@material-ui/icons/Assessment';
 import Face from '@material-ui/icons/Face';
 import ThumbUp from '@material-ui/icons/ThumbUp';
@@ -10,6 +10,7 @@ import MonthlySales from '../components/dashboard/MonthlySales';
 import BrowserUsage from '../components/dashboard/BrowserUsage';
 import RecentlyProducts from '../components/dashboard/RecentlyProducts';
 import globalStyles from '../styles.scss';
+import Grid from '@material-ui/core/Grid';
 import Data from '../data';
 
 const DashboardPage = () => {
@@ -18,61 +19,54 @@ const DashboardPage = () => {
     <div>
       <h3 style={globalStyles.navigation}>Application / Dashboard</h3>
 
-      <div className="row">
-
-        <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
+      <Grid container spacing={24}>
+        <Grid item xs={12} sm={6} md={3}>
           <InfoBox Icon={ShoppingCart}
-                   color={pink600}
+                   color={pink[600]}
                    title="Total Profit"
                    value="1500k"
           />
-        </div>
-
-
-        <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
+          </Grid>
+        <Grid item xs={12} sm={6} md={3}>
           <InfoBox Icon={ThumbUp}
-                   color={cyan600}
+                   color={cyan[600]}
                    title="Likes"
                    value="4231"
           />
-        </div>
-
-        <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
           <InfoBox Icon={Assessment}
-                   color={purple600}
+                   color={purple[600]}
                    title="Sales"
                    value="460"
           />
-        </div>
-
-        <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
+          </Grid>
+        <Grid item xs={12} sm={6} md={3}>
           <InfoBox Icon={Face}
-                   color={orange600}
+                   color={orange[600]}
                    title="New Members"
                    value="248"
           />
-        </div>
-      </div>
+        </Grid>
+      </Grid>
 
-      <div className="row">
-        <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-md m-b-15">
+      <Grid container spacing={24}>
+        <Grid item xs={12} sm={6}>
           <NewOrders data={Data.dashBoardPage.newOrders}/>
-        </div>
-
-        <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 m-b-15">
+        </Grid>
+        <Grid item xs={12} sm={6}>
           <MonthlySales data={Data.dashBoardPage.monthlySales}/>
-        </div>
-      </div>
-
-      <div className="row">
-        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-b-15 ">
+        </Grid>
+      </Grid>
+      <Grid container spacing={24}>
+        <Grid item xs={12} sm={6}>
           <RecentlyProducts data={Data.dashBoardPage.recentProducts}/>
-        </div>
-
-        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-b-15 ">
+        </Grid>
+        <Grid item xs={12} sm={6}>
           <BrowserUsage data={Data.dashBoardPage.browserUsage}/>
-        </div>
-      </div>
+        </Grid>
+      </Grid>
+
     </div>
   );
 };

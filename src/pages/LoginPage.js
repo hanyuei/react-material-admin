@@ -54,7 +54,7 @@ const LoginPage = () => {
     },
     btn: {
       background: '#4f81e9',
-      color: white,
+      color: 'white',
       padding: 7,
       borderRadius: 2,
       margin: 2,

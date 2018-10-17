@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
-import {white, grey800} from '@material-ui/core/colors';
+import {white, grey} from '@material-ui/core/colors';
 import Typography from '@material-ui/core/Typography';
 
 class InfoBox extends React.Component {
 
   render() {
-    const {color, title, value, Icon} = this.props;
-
+    const {color, title, value, Icon, classes} = this.props;
+    console.log("classes in InfoBox:", classes)
     const styles = {
       content: {
         padding: '5px 10px',
@@ -19,12 +19,12 @@ class InfoBox extends React.Component {
         display: 'block',
         fontWeight: Typography.fontWeightMedium,
         fontSize: 18,
-        color: grey800
+        color: grey[800]
       },
       text: {
         fontSize: 20,
         fontWeight: Typography.fontWeightLight,
-        color: grey800
+        color: grey[800]
       },
       iconSpan: {
         float: 'left',
@@ -38,18 +38,16 @@ class InfoBox extends React.Component {
         width: 48,
         marginTop: 20,
         maxWidth: '100%'
-
       }
     };
 
     return (
       <Paper>
         <span style={styles.iconSpan}>
-          <Icon color={white}
-                style={styles.icon}
-          />
+          <div style={{color: 'white'}}>
+            <Icon style={styles.icon}/>
+          </div>
         </span>
-
         <div style={styles.content}>
           <span style={styles.text}>{title}</span>
           <span style={styles.number}>{value}</span>

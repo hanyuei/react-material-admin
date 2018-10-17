@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
-import {white, purple600, purple500} from '@material-ui/core/colors';
+import {white, purple} from '@material-ui/core/colors';
 import {LineChart, Line, ResponsiveContainer} from 'recharts';
 import Typography from '@material-ui/core/Typography';
 
@@ -9,7 +9,7 @@ const NewOrders = (props) => {
 
   const styles = {
     paper: {
-      backgroundColor: purple500,
+      backgroundColor: purple[500],
       height: 150
     },
     div: {
@@ -19,8 +19,8 @@ const NewOrders = (props) => {
     header: {
       fontSize: 24,
       fontWeight: Typography.fontWeightLight,
-      color: white,
-      backgroundColor: purple600,
+      color: 'white',
+      backgroundColor: purple[600],
       padding: 10,
     }
   };
