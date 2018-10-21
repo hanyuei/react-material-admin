@@ -4,6 +4,7 @@ import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import TableCell from "@material-ui/core/TableCell";
 import Button from "@material-ui/core/Button";
 import { pink, grey } from "@material-ui/core/colors";
 import ContentCreate from "@material-ui/icons/Create";
@@ -59,23 +60,24 @@ const TablePage = () => {
 
         <Table>
           <TableHead>
-            <TableHead />
-            <TableRow style={styles.columns.id}>ID</TableRow>
-            <TableRow style={styles.columns.name}>Name</TableRow>
-            <TableRow style={styles.columns.price}>Price</TableRow>
-            <TableRow style={styles.columns.category}>Category</TableRow>
-            <TableRow style={styles.columns.edit}>Edit</TableRow>
+            <TableRow>
+              <TableCell style={styles.columns.id}>ID</TableCell>
+              <TableCell style={styles.columns.name}>Name</TableCell>
+              <TableCell style={styles.columns.price}>Price</TableCell>
+              <TableCell style={styles.columns.category}>Category</TableCell>
+              <TableCell style={styles.columns.edit}>Edit</TableCell>
+            </TableRow>
           </TableHead>
           <TableBody>
             {Data.tablePage.items.map(item => (
               <TableRow key={item.id}>
-                <TableRow style={styles.columns.id}>{item.id}</TableRow>
-                <TableRow style={styles.columns.name}>{item.name}</TableRow>
-                <TableRow style={styles.columns.price}>{item.price}</TableRow>
-                <TableRow style={styles.columns.category}>
+                <TableCell style={styles.columns.id}>{item.id}</TableCell>
+                <TableCell style={styles.columns.name}>{item.name}</TableCell>
+                <TableCell style={styles.columns.price}>{item.price}</TableCell>
+                <TableCell style={styles.columns.category}>
                   {item.category}
-                </TableRow>
-                <TableRow style={styles.columns.edit}>
+                </TableCell>
+                <TableCell style={styles.columns.edit}>
                   <Link className="button" to="/form">
                     <Button
                       mini={true}
@@ -87,7 +89,7 @@ const TablePage = () => {
                       <ContentCreate />
                     </Button>
                   </Link>
-                </TableRow>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
