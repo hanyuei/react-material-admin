@@ -1,24 +1,23 @@
-import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import {white, blue} from '@material-ui/core/colors';
-import IconButton from '@material-ui/core/IconButton';
-import Search from '@material-ui/icons/Search';
+import React from "react";
+import TextField from "@material-ui/core/TextField";
+import { white, blue } from "@material-ui/core/colors";
+import IconButton from "@material-ui/core/IconButton";
+import Search from "@material-ui/icons/Search";
 
 const SearchBox = () => {
-
   const styles = {
     iconButton: {
-      float: 'left',
+      float: "left",
       paddingTop: 17
     },
     textField: {
-      color: 'white',
+      color: "white",
       backgroundColor: blue[500],
       borderRadius: 2,
       height: 35
     },
     inputStyle: {
-      color: 'white',
+      color: "white",
       paddingLeft: 5
     },
     hintStyle: {
@@ -30,7 +29,7 @@ const SearchBox = () => {
 
   return (
     <div>
-      <IconButton style={styles.iconButton} >
+      <IconButton style={styles.iconButton}>
         <Search color={white} />
       </IconButton>
       <TextField

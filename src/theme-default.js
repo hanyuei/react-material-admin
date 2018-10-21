@@ -1,13 +1,21 @@
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
-import { blue, grey, purple, green, pink, red, black } from '@material-ui/core/colors';
+import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import {
+  blue,
+  grey,
+  purple,
+  green,
+  pink,
+  red,
+  black
+} from "@material-ui/core/colors";
 
-console.log("blue[600]", blue[600])
-console.log("grey[900]:", grey[900])
-console.log("black:", black)
+console.log("blue[600]", blue[600]);
+console.log("grey[900]:", grey[900]);
+console.log("black:", black);
 const themeDefault = createMuiTheme({
   palette: {
     primary: blue,
-    secondary: pink,
+    secondary: pink
   },
 
   // palette: {
@@ -33,10 +41,9 @@ const themeDefault = createMuiTheme({
     backgroundColor: black
   },
   raisedButton: {
-    primaryColor: blue[600],
-  },
+    primaryColor: blue[600]
+  }
   //useNextVariants: true,
 });
-
 
 export default themeDefault;

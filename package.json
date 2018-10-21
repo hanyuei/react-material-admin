@@ -27,6 +27,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "enzyme": "^3.7.0",
-    "node-sass": "^4.9.4"
+    "node-sass": "^4.9.4",
+    "prettier": "1.14.3"
   }
 }

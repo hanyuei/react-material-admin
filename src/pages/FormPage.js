@@ -1,22 +1,18 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
-// import SelectField from '@material-ui/core/SelectField';
-import Select from '@material-ui/core/Select';
-// import Toggle from '@material-ui/core/Toggle';
-// import DatePicker from '@material-ui/core/DatePicker';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
-import {grey} from '@material-ui/core/colors';
-import Divider from '@material-ui/core/Divider';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import PageBase from '../components/PageBase';
+import React from "react";
+import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import MenuItem from "@material-ui/core/MenuItem";
+import TextField from "@material-ui/core/TextField";
+import Select from "@material-ui/core/Select";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Switch from "@material-ui/core/Switch";
+import { grey } from "@material-ui/core/colors";
+import Divider from "@material-ui/core/Divider";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import PageBase from "../components/PageBase";
 
 const FormPage = () => {
-  console.log('render form page')
   const styles = {
     toggleDiv: {
       // maxWidth: 300,
@@ -29,7 +25,7 @@ const FormPage = () => {
     },
     buttons: {
       marginTop: 30,
-      float: 'right'
+      float: "right"
     },
     saveButton: {
       marginLeft: 5
@@ -37,10 +33,8 @@ const FormPage = () => {
   };
 
   return (
-    <PageBase title="Form Page"
-              navigation="Application / Form Page">
+    <PageBase title="Form Page" navigation="Application / Form Page">
       <form>
-
         <TextField
           hintText="Name"
           label="Name"
@@ -54,20 +48,20 @@ const FormPage = () => {
             // label="City"
             // value=""
             inputProps={{
-              name: 'City',
-              id: 'City',
+              name: "City",
+              id: "City"
             }}
             fullWidth={true}
-            margin="normal">
+            margin="normal"
+          >
             <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
+              <em>None</em>
+            </MenuItem>
             <MenuItem value={"London"}>London</MenuItem>
             <MenuItem value={"Paris"}>Paris</MenuItem>
             <MenuItem value={"Rome"}>Rome</MenuItem>
           </Select>
         </FormControl>
-        
 
         {/* <DatePicker
           hintText="Expiration Date"
@@ -79,7 +73,7 @@ const FormPage = () => {
           label="Expiration Date"
           type="date"
           InputLabelProps={{
-            shrink: true,
+            shrink: true
           }}
           margin="normal"
           fullWidth={true}
@@ -94,19 +88,22 @@ const FormPage = () => {
         <div style={styles.toggleDiv}>
           <FormControlLabel control={<Switch />} label="Disabled" />
         </div>
-        <Divider/>
+        <Divider />
 
         <div style={styles.buttons}>
           <Link to="/">
-            <Button variant='contained'>Cancel</Button>
+            <Button variant="contained">Cancel</Button>
           </Link>
 
-          <Button style={styles.saveButton}
-                  variant='contained'
-                  type="submit"
-                  color="primary"
-                  // primary={true}
-                 >Save</Button>
+          <Button
+            style={styles.saveButton}
+            variant="contained"
+            type="submit"
+            color="primary"
+            // primary={true}
+          >
+            Save
+          </Button>
         </div>
       </form>
     </PageBase>

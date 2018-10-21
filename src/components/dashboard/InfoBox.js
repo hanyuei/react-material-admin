@@ -1,22 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Paper from '@material-ui/core/Paper';
-import {white, grey} from '@material-ui/core/colors';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import PropTypes from "prop-types";
+import Paper from "@material-ui/core/Paper";
+import { white, grey } from "@material-ui/core/colors";
+import Typography from "@material-ui/core/Typography";
 
 class InfoBox extends React.Component {
-
   render() {
-    const {color, title, value, Icon, classes} = this.props;
-    console.log("classes in InfoBox:", classes)
+    const { color, title, value, Icon, classes } = this.props;
+    console.log("classes in InfoBox:", classes);
     const styles = {
       content: {
-        padding: '5px 10px',
+        padding: "5px 10px",
         marginLeft: 90,
         height: 80
       },
       number: {
-        display: 'block',
+        display: "block",
         fontWeight: Typography.fontWeightMedium,
         fontSize: 18,
         color: grey[800]
@@ -27,25 +26,25 @@ class InfoBox extends React.Component {
         color: grey[800]
       },
       iconSpan: {
-        float: 'left',
+        float: "left",
         height: 90,
         width: 90,
-        textAlign: 'center',
+        textAlign: "center",
         backgroundColor: color
       },
       icon: {
         height: 48,
         width: 48,
         marginTop: 20,
-        maxWidth: '100%'
+        maxWidth: "100%"
       }
     };
 
     return (
       <Paper>
         <span style={styles.iconSpan}>
-          <div style={{color: 'white'}}>
-            <Icon style={styles.icon}/>
+          <div style={{ color: "white" }}>
+            <Icon style={styles.icon} />
           </div>
         </span>
         <div style={styles.content}>
@@ -53,7 +52,7 @@ class InfoBox extends React.Component {
           <span style={styles.number}>{value}</span>
         </div>
       </Paper>
-      );
+    );
   }
 }
 
