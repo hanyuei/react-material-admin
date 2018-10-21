@@ -6,8 +6,7 @@ import Typography from "@material-ui/core/Typography";
 
 class InfoBox extends React.Component {
   render() {
-    const { color, title, value, Icon, classes } = this.props;
-    console.log("classes in InfoBox:", classes);
+    const { color, title, value, Icon } = this.props;
     const styles = {
       content: {
         padding: "5px 10px",

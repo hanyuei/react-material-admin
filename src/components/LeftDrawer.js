@@ -57,7 +57,6 @@ const drawStyles = theme => {
 
 const LeftDrawer = props => {
   let { navDrawerOpen, classes } = props;
-  console.log("classes.avatar.root:", classes);
   return (
     <Drawer
       docked={true}
