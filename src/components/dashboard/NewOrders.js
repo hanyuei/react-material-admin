@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Paper from "@material-ui/core/Paper";
-import { white, purple } from "@material-ui/core/colors";
+import { purple } from "@material-ui/core/colors";
 import { LineChart, Line, ResponsiveContainer } from "recharts";
 import Typography from "@material-ui/core/Typography";
 

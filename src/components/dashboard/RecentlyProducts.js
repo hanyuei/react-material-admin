@@ -6,13 +6,12 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListSubheader from "@material-ui/core/ListSubheader";
-import Divider from "@material-ui/core/Divider";
 import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import IconMenu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import { grey, cyan, pink } from "@material-ui/core/colors";
+import { grey, cyan } from "@material-ui/core/colors";
 import Typography from "@material-ui/core/Typography";
 import Wallpaper from "@material-ui/icons/Wallpaper";
 import { withStyles } from "@material-ui/core/styles";
@@ -28,7 +27,6 @@ const styles = {
 
 const RecentlyProducts = props => {
   const { classes } = props;
-  console.log("classes in RecentlyProducts:", classes);
   const iconButtonElement = (
     <IconButton touch={true} tooltipPosition="bottom-left">
       <MoreVertIcon color={grey[400]} />
@@ -58,6 +56,7 @@ const RecentlyProducts = props => {
             <ListItemText primary={item.title} secondary={item.text} />
             <ListItemSecondaryAction>
               {/* {rightIconMenu} */}
+              {rightIconMenu}
               <MoreVertIcon color={grey[400]} />
             </ListItemSecondaryAction>
           </ListItem>

@@ -1,17 +1,6 @@
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
-import {
-  blue,
-  grey,
-  purple,
-  green,
-  pink,
-  red,
-  black
-} from "@material-ui/core/colors";
+import { blue, grey, pink, red, black } from "@material-ui/core/colors";
 
-console.log("blue[600]", blue[600]);
-console.log("grey[900]:", grey[900]);
-console.log("black:", black);
 const themeDefault = createMuiTheme({
   palette: {
     primary: blue,

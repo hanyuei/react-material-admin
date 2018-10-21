@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/icons/Menu";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
@@ -113,78 +111,63 @@ class Header extends React.Component {
     const { handleChangeRequestNavDrawer, classes } = this.props;
     const customStyles = this.props.styles || {};
 
-    const { anchorEl, mobileMoreAnchorEl } = this.state;
+    const { anchorEl } = this.state;
     const isMenuOpen = Boolean(anchorEl);
-    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+    // const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-    const renderMenu = (
-      <Menu
-        anchorEl={anchorEl}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        transformOrigin={{ vertical: "top", horizontal: "right" }}
-        open={isMenuOpen}
-        onClose={this.handleMenuClose}
-      >
-        <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-        <MenuItem onClick={this.handleClose}>My account</MenuItem>
-      </Menu>
-    );
+    // const renderMenu = (
+    //   <Menu
+    //     anchorEl={anchorEl}
+    //     anchorOrigin={{ vertical: "top", horizontal: "right" }}
+    //     transformOrigin={{ vertical: "top", horizontal: "right" }}
+    //     open={isMenuOpen}
+    //     onClose={this.handleMenuClose}
+    //   >
+    //     <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+    //     <MenuItem onClick={this.handleClose}>My account</MenuItem>
+    //   </Menu>
+    // );
 
-    const renderMobileMenu = (
-      <Menu
-        anchorEl={mobileMoreAnchorEl}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        transformOrigin={{ vertical: "top", horizontal: "right" }}
-        open={isMobileMenuOpen}
-        onClose={this.handleMobileMenuClose}
-      >
-        <MenuItem>
-          <IconButton color="inherit">
-            <Badge
-              className={classes.margin}
-              badgeContent={4}
-              color="secondary"
-            >
-              <MailIcon />
-            </Badge>
-          </IconButton>
-          <p>Messages</p>
-        </MenuItem>
-        <MenuItem>
-          <IconButton color="inherit">
-            <Badge
-              className={classes.margin}
-              badgeContent={11}
-              color="secondary"
-            >
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-          <p>Notifications</p>
-        </MenuItem>
-        <MenuItem onClick={this.handleProfileMenuOpen}>
-          <IconButton color="inherit">
-            <AccountCircle />
-          </IconButton>
-          <p>Profile</p>
-        </MenuItem>
-      </Menu>
-    );
-
-    // const style = {
-    //   appBar: {
-    //     position: 'fixed',
-    //     top: 0,
-    //     overflow: 'hidden',
-    //     maxHeight: 57
-    //   },
-    //   menuButton: {
-    //     marginLeft: 10
-    //   },
-    //   iconsRightContainer: {
-    //     marginLeft: 20
-    //   }
-    // };
+    // const renderMobileMenu = (
+    //   <Menu
+    //     anchorEl={mobileMoreAnchorEl}
+    //     anchorOrigin={{ vertical: "top", horizontal: "right" }}
+    //     transformOrigin={{ vertical: "top", horizontal: "right" }}
+    //     open={isMobileMenuOpen}
+    //     onClose={this.handleMobileMenuClose}
+    //   >
+    //     <MenuItem>
+    //       <IconButton color="inherit">
+    //         <Badge
+    //           className={classes.margin}
+    //           badgeContent={4}
+    //           color="secondary"
+    //         >
+    //           <MailIcon />
+    //         </Badge>
+    //       </IconButton>
+    //       <p>Messages</p>
+    //     </MenuItem>
+    //     <MenuItem>
+    //       <IconButton color="inherit">
+    //         <Badge
+    //           className={classes.margin}
+    //           badgeContent={11}
+    //           color="secondary"
+    //         >
+    //           <NotificationsIcon />
+    //         </Badge>
+    //       </IconButton>
+    //       <p>Notifications</p>
+    //     </MenuItem>
+    //     <MenuItem onClick={this.handleProfileMenuOpen}>
+    //       <IconButton color="inherit">
+    //         <AccountCircle />
+    //       </IconButton>
+    //       <p>Profile</p>
+    //     </MenuItem>
+    //   </Menu>
+    // );
 
     return (
       <div>
@@ -252,46 +235,6 @@ class Header extends React.Component {
         </AppBar>
       </div>
     );
-
-    // return (
-    //     <div>
-    //         <AppBar
-    //           classes={{...styles, ...style.appBar}}
-    //           title={
-    //             <SearchBox />
-    //           }
-    //           iconElementLeft={
-    //               <IconButton style={style.menuButton} onClick={handleChangeRequestNavDrawer}>
-    //                 <Menu color={white} />
-    //               </IconButton>
-    //           }
-    //           iconElementRight={
-    //             <div style={style.iconsRightContainer}>
-    //               <IconMenu color={white}
-    //                         iconButtonElement={
-    //                           <IconButton><ViewModule color={white}/></IconButton>
-    //                         }
-    //                         targetOrigin={{horizontal: 'right', vertical: 'top'}}
-    //                         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-    //               >
-    //                 <MenuItem key={1} primaryText="Application 1"/>
-    //                 <MenuItem key={2} primaryText="Application 2"/>
-    //                 <MenuItem key={3} primaryText="Application 3"/>
-    //               </IconMenu>
-    //               <IconMenu color={white}
-    //                         iconButtonElement={
-    //                           <IconButton><MoreVertIcon color={white}/></IconButton>
-    //                         }
-    //                         targetOrigin={{horizontal: 'right', vertical: 'top'}}
-    //                         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-    //               >
-    //                 <MenuItem primaryText="Sign out" containerElement={<Link to="/login"/>}/>
-    //               </IconMenu>
-    //             </div>
-    //           }
-    //         />
-    //       </div>
-    //   );
   }
 }
 
@@ -300,5 +243,4 @@ Header.propTypes = {
   handleChangeRequestNavDrawer: PropTypes.func
 };
 
-// export default Header;
 export default withStyles(styles)(Header);

@@ -1,12 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Drawer from "@material-ui/core/Drawer";
-// import {spacing, Typography} from '@material-ui/core';
 import Typography from "@material-ui/core/Typography";
-import { white, blue, black } from "@material-ui/core/colors";
+import { blue } from "@material-ui/core/colors";
 import MenuItem from "@material-ui/core/MenuItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
 import { Link } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import { withStyles } from "@material-ui/core/styles";

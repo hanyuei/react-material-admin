@@ -11,8 +11,6 @@ import ContentAdd from "@material-ui/icons/Add";
 import PageBase from "../components/PageBase";
 import Data from "../data";
 
-console.log("ContentCreate:", ContentCreate);
-
 const TablePage = () => {
   const styles = {
     floatingActionButton: {
@@ -62,36 +60,22 @@ const TablePage = () => {
         <Table>
           <TableHead>
             <TableHead />
-            <TableHeaderColumn style={styles.columns.id}>ID</TableHeaderColumn>
-            <TableHeaderColumn style={styles.columns.name}>
-              Name
-            </TableHeaderColumn>
-            <TableHeaderColumn style={styles.columns.price}>
-              Price
-            </TableHeaderColumn>
-            <TableHeaderColumn style={styles.columns.category}>
-              Category
-            </TableHeaderColumn>
-            <TableHeaderColumn style={styles.columns.edit}>
-              Edit
-            </TableHeaderColumn>
+            <TableRow style={styles.columns.id}>ID</TableRow>
+            <TableRow style={styles.columns.name}>Name</TableRow>
+            <TableRow style={styles.columns.price}>Price</TableRow>
+            <TableRow style={styles.columns.category}>Category</TableRow>
+            <TableRow style={styles.columns.edit}>Edit</TableRow>
           </TableHead>
           <TableBody>
             {Data.tablePage.items.map(item => (
               <TableRow key={item.id}>
-                <TableRowColumn style={styles.columns.id}>
-                  {item.id}
-                </TableRowColumn>
-                <TableRowColumn style={styles.columns.name}>
-                  {item.name}
-                </TableRowColumn>
-                <TableRowColumn style={styles.columns.price}>
-                  {item.price}
-                </TableRowColumn>
-                <TableRowColumn style={styles.columns.category}>
+                <TableRow style={styles.columns.id}>{item.id}</TableRow>
+                <TableRow style={styles.columns.name}>{item.name}</TableRow>
+                <TableRow style={styles.columns.price}>{item.price}</TableRow>
+                <TableRow style={styles.columns.category}>
                   {item.category}
-                </TableRowColumn>
-                <TableRowColumn style={styles.columns.edit}>
+                </TableRow>
+                <TableRow style={styles.columns.edit}>
                   <Link className="button" to="/form">
                     <Button
                       mini={true}
@@ -103,7 +87,7 @@ const TablePage = () => {
                       <ContentCreate />
                     </Button>
                   </Link>
-                </TableRowColumn>
+                </TableRow>
               </TableRow>
             ))}
           </TableBody>
