@@ -1,21 +1,74 @@
-# Create React App example
 
-## How to use
 
-Download the example [or clone the repo](https://github.com/mui-org/material-ui):
+React Ui-Material Admin Template
+================================
 
-```bash
-curl https://codeload.github.com/mui-org/material-ui/tar.gz/master | tar -xz --strip=2 material-ui-master/examples/create-react-app
-cd create-react-app
-```
+Thanks to [rafaelhz's template](https://github.com/rafaelhz/react-material-admin-template).
+This repo use the latest react (16.x) & material-ui (3.x) version and create-react-app to rewrite the template.
 
-Install it and run:
+This is a simple responsive admin template using [React](https://facebook.github.io/react/) and [Material-UI](http://www.material-ui.com/) components.
 
-```bash
+This is the very first version, feel free to use for any app. Contributions are always welcome!
+
+Demo
+----
+
+Installation / Running
+----------------------
+
+```sh
+
+git clone <repository-url>
+
+# change into the new directory
 npm install
-npm run start
+
+npm start # will run the app
+
+# Visit the app at http://localhost:3000
+
 ```
 
-## The idea behind the example
+*for test*
 
-[Create React App](https://github.com/facebookincubator/create-react-app) with no build configuration.
+```
+npm run test
+```
+
+
+
+*for Production*
+
+```sh
+npm run build
+
+cd build
+
+# start a static server, eg node http-server
+http-server
+
+```
+
+Docs
+--------------
+
+- compile & build & test
+  check the [create-react-app](https://github.com/facebook/create-react-app) doc for more information.
+
+- material-ui 
+
+  https://material-ui.com
+
+  if you are using some material-ui 0.x version, you can check this docs for migration [migration-from-v0-x](https://material-ui.com/guides/migration-v0x/#migration-from-v0-x)
+
+- css
+  material-ui is using [jss](https://github.com/cssinjs/jss) css-in-js for styling solution.
+
+- react-router
+  now switch to version 4.x, it's a complete rewrite from the previous version.
+  https://reacttraining.com/react-router/web/example/basic
+
+
+License
+-------
+MIT
