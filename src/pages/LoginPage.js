@@ -79,12 +79,14 @@ const LoginPage = () => {
           <Paper style={styles.paper}>
             <form>
               <TextField hintText="E-mail" label="E-mail" fullWidth={true} />
-              <TextField
-                hintText="Password"
-                label="Password"
-                fullWidth={true}
-                type="password"
-              />
+              <div style={{ marginTop: 16 }}>
+                <TextField
+                  hintText="Password"
+                  label="Password"
+                  fullWidth={true}
+                  type="password"
+                />
+              </div>
 
               <div style={{ marginTop: 10 }}>
                 <FormControlLabel

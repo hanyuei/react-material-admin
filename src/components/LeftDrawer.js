@@ -26,7 +26,7 @@ const drawStyles = theme => {
       fontSize: 22,
       color: Typography.textFullWhite,
       lineHeight: "64px",
-      fontWeight: Typography.fontWeightLight,
+      fontWeight: 300,
       backgroundColor: blue[500],
       paddingLeft: 40,
       height: 64

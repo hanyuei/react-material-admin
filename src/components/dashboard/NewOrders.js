@@ -17,7 +17,7 @@ const NewOrders = props => {
     },
     header: {
       fontSize: 24,
-      fontWeight: Typography.fontWeightLight,
+      fontWeight: 300,
       color: "white",
       backgroundColor: purple[600],
       padding: 10

@@ -9,16 +9,14 @@ import NewOrders from "../components/dashboard/NewOrders";
 import MonthlySales from "../components/dashboard/MonthlySales";
 import BrowserUsage from "../components/dashboard/BrowserUsage";
 import RecentlyProducts from "../components/dashboard/RecentlyProducts";
-import globalStyles from "../styles.scss";
+import globalStyles from "../styles";
 import Grid from "@material-ui/core/Grid";
 import Data from "../data";
 
 const DashboardPage = () => {
   return (
     <div>
-      <h3 style={{ ...globalStyles.navigation, marginBottom: "20px" }}>
-        Application / Dashboard
-      </h3>
+      <h3 style={globalStyles.navigation}>Application / Dashboard</h3>
 
       <Grid container spacing={24}>
         <Grid item xs={12} sm={6} md={3}>

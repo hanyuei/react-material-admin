@@ -19,7 +19,7 @@ import { withStyles } from "@material-ui/core/styles";
 const styles = {
   subheader: {
     fontSize: 24,
-    fontWeight: Typography.fontWeightLight,
+    fontWeight: 300,
     backgroundColor: cyan[600],
     color: "white"
   }
