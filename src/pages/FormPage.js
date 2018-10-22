@@ -15,7 +15,6 @@ import PageBase from "../components/PageBase";
 const FormPage = () => {
   const styles = {
     toggleDiv: {
-      // maxWidth: 300,
       marginTop: 20,
       marginBottom: 5
     },
@@ -45,8 +44,6 @@ const FormPage = () => {
         <FormControl fullWidth={true}>
           <InputLabel htmlFor="City">City</InputLabel>
           <Select
-            // label="City"
-            // value=""
             inputProps={{
               name: "City",
               id: "City"
@@ -63,11 +60,6 @@ const FormPage = () => {
           </Select>
         </FormControl>
 
-        {/* <DatePicker
-          hintText="Expiration Date"
-          label="Expiration Date"
-          fullWidth={true}/> */}
-
         <TextField
           id="expirationDate"
           label="Expiration Date"
@@ -79,12 +71,6 @@ const FormPage = () => {
           fullWidth={true}
         />
 
-        {/* <div style={styles.toggleDiv}>
-          <Toggle
-            label="Disabled"
-            labelStyle={styles.toggleLabel}
-          />
-        </div> */}
         <div style={styles.toggleDiv}>
           <FormControlLabel control={<Switch />} label="Disabled" />
         </div>
@@ -100,7 +86,6 @@ const FormPage = () => {
             variant="contained"
             type="submit"
             color="primary"
-            // primary={true}
           >
             Save
           </Button>

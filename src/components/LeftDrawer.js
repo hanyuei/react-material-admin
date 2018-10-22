@@ -100,5 +100,4 @@ LeftDrawer.propTypes = {
   username: PropTypes.string
 };
 
-// export default LeftDrawer;
 export default withStyles(drawStyles, { withTheme: true })(LeftDrawer);

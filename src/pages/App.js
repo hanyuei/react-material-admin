@@ -66,7 +66,6 @@ class App extends React.Component {
           />
 
           <div style={styles.container}>
-            {/* {this.props.children} */}
             <Switch>
               <Route exact path="/" component={Dashboard} />
               <Route path="/dashboard" component={Dashboard} />

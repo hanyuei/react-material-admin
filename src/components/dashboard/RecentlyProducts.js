@@ -12,7 +12,6 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import IconMenu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { grey, cyan } from "@material-ui/core/colors";
-import Typography from "@material-ui/core/Typography";
 import Wallpaper from "@material-ui/icons/Wallpaper";
 import { withStyles } from "@material-ui/core/styles";
 
