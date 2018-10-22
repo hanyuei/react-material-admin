@@ -2,6 +2,9 @@ import React from "react";
 import { shallow } from "enzyme";
 import { expect } from "chai";
 import PageBase from "./PageBase";
+import { configure } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+configure({ adapter: new Adapter() });
 
 describe("<PageBase />", () => {
   it("should have a span with the navigation text", () => {
