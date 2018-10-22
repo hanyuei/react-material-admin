@@ -2,9 +2,9 @@ import { render } from "react-dom";
 import routes from "./routes";
 import registerServiceWorker from "./registerServiceWorker";
 import "./styles.scss";
+import "font-awesome/css/font-awesome.css";
 require("./favicon.ico");
 
-// import 'font-awesome/css/font-awesome.css';
 // import 'flexboxgrid/css/flexboxgrid.css';
 
 render(
