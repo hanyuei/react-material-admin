@@ -2,10 +2,12 @@
   "name": "create-react-app",
   "version": "3.0.0",
   "private": true,
+  "homepage": "https://zhuang17.github.com/react-material-ui-admin-template",
   "dependencies": {
     "@material-ui/core": "latest",
     "@material-ui/icons": "^3.0.1",
     "font-awesome": "^4.7.0",
+    "gh-pages": "^2.0.1",
     "prop-types": "latest",
     "react": "latest",
     "react-dom": "latest",
@@ -17,7 +19,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": [
     ">0.2%",
