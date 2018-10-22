@@ -16,7 +16,9 @@ import Data from "../data";
 const DashboardPage = () => {
   return (
     <div>
-      <h3 style={globalStyles.navigation}>Application / Dashboard</h3>
+      <h3 style={{ ...globalStyles.navigation, marginBottom: "20px" }}>
+        Application / Dashboard
+      </h3>
 
       <Grid container spacing={24}>
         <Grid item xs={12} sm={6} md={3}>

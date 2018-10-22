@@ -22,4 +22,6 @@ const styles = {
   }
 };
 
+console.log("Typography.fontWeightLight:", Typography.fontWeightLight);
+
 export default styles;
