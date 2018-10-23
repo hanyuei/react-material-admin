@@ -45,8 +45,8 @@ npm run build
 
 cd build
 
-# start a static server serving ./build dir, eg node http-server or serve in express using express.static
-http-server
+# start a static server serving ./build dir, eg node serve/http-server or serve in express using express.static
+serve -s build
 
 ```
 
