@@ -1,7 +1,7 @@
 {
   "main.css": "/react-material-ui-admin-template/static/css/main.23b08e41.chunk.css",
-  "main.js": "/react-material-ui-admin-template/static/js/main.d43a2821.chunk.js",
-  "main.js.map": "/react-material-ui-admin-template/static/js/main.d43a2821.chunk.js.map",
+  "main.js": "/react-material-ui-admin-template/static/js/main.aee003a0.chunk.js",
+  "main.js.map": "/react-material-ui-admin-template/static/js/main.aee003a0.chunk.js.map",
   "static/css/1.11e6f8bf.chunk.css": "/react-material-ui-admin-template/static/css/1.11e6f8bf.chunk.css",
   "static/js/1.a18a5ab5.chunk.js": "/react-material-ui-admin-template/static/js/1.a18a5ab5.chunk.js",
   "static/js/1.a18a5ab5.chunk.js.map": "/react-material-ui-admin-template/static/js/1.a18a5ab5.chunk.js.map",
@@ -10,9 +10,9 @@
   "static/media/material_bg.png": "/react-material-ui-admin-template/static/media/material_bg.abe4a318.png",
   "static/media/font-awesome.css": "/react-material-ui-admin-template/static/media/fontawesome-webfont.af7ae505.woff2",
   "static/media/favicon.ico": "/react-material-ui-admin-template/static/media/favicon.011201ab.ico",
-  "static/css/1.11e6f8bf.chunk.css.map": "/react-material-ui-admin-template/static/css/1.11e6f8bf.chunk.css.map",
   "static/css/main.23b08e41.chunk.css.map": "/react-material-ui-admin-template/static/css/main.23b08e41.chunk.css.map",
+  "static/css/1.11e6f8bf.chunk.css.map": "/react-material-ui-admin-template/static/css/1.11e6f8bf.chunk.css.map",
   "index.html": "/react-material-ui-admin-template/index.html",
-  "precache-manifest.890543521b7d45fdadc4c064cece24a7.js": "/react-material-ui-admin-template/precache-manifest.890543521b7d45fdadc4c064cece24a7.js",
+  "precache-manifest.e378548b33af28b548f53a96bd674ec9.js": "/react-material-ui-admin-template/precache-manifest.e378548b33af28b548f53a96bd674ec9.js",
   "service-worker.js": "/react-material-ui-admin-template/service-worker.js"
 }
