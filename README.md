@@ -3,7 +3,7 @@ React Ui-Material Admin Template
 ================================
 
 Thanks to [rafaelhz's template](https://github.com/rafaelhz/react-material-admin-template).
-This repo use the latest react (16.x) & material-ui (3.x) version and create-react-app to rewrite the template.
+This repo use the latest react (16.x) & material-ui (3.x) version and create-react-app to rewrite the admin template.
 
 This is a simple responsive admin template using [React](https://facebook.github.io/react/) and [Material-UI](http://www.material-ui.com/) components.
 
@@ -11,6 +11,8 @@ This is the very first version, feel free to use for any app. Contributions are 
 
 Demo
 ----
+
+You can find a demo [here](https://zhuang17.github.io/react-material-ui-admin-template).
 
 Installation / Running
 ----------------------
