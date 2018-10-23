@@ -1,11 +1,9 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import PropTypes from "prop-types";
-import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import Header from "../components/Header";
 import LeftDrawer from "../components/LeftDrawer";
 import withWidth, { LARGE, SMALL } from "@material-ui/core/withWidth";
-import ThemeDefault from "../theme-default";
 import Data from "../data";
 import Dashboard from "./DashboardPage";
 import Form from "./FormPage";
@@ -50,32 +48,30 @@ class App extends React.Component {
     };
 
     return (
-      <MuiThemeProvider theme={ThemeDefault}>
-        <div>
-          <Header
-            styles={styles.header}
-            handleChangeRequestNavDrawer={this.handleChangeRequestNavDrawer.bind(
-              this
-            )}
-          />
+      <div>
+        <Header
+          styles={styles.header}
+          handleChangeRequestNavDrawer={this.handleChangeRequestNavDrawer.bind(
+            this
+          )}
+        />
 
-          <LeftDrawer
-            navDrawerOpen={navDrawerOpen}
-            menus={Data.menus}
-            username="User Admin"
-          />
+        <LeftDrawer
+          navDrawerOpen={navDrawerOpen}
+          menus={Data.menus}
+          username="User Admin"
+        />
 
-          <div style={styles.container}>
-            <Switch>
-              <Route exact path="/" component={Dashboard} />
-              <Route path="/dashboard" component={Dashboard} />
-              <Route path="/form" component={Form} />
-              <Route path="/table" component={Table} />
-              <Route component={NotFound} />
-            </Switch>
-          </div>
+        <div style={styles.container}>
+          <Switch>
+            <Route exact path="/" component={Dashboard} />
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/form" component={Form} />
+            <Route path="/table" component={Table} />
+            <Route component={NotFound} />
+          </Switch>
         </div>
-      </MuiThemeProvider>
+      </div>
     );
   }
 }
