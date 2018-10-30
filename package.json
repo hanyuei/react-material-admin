@@ -3,7 +3,7 @@
   "version": "3.0.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "latest",
+    "@material-ui/core": "^3.2.2",
     "@material-ui/icons": "^3.0.1",
     "font-awesome": "^4.7.0",
     "gh-pages": "^2.0.1",
