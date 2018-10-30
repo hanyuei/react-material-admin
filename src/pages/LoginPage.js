@@ -73,7 +73,7 @@ const LoginPage = () => {
   };
 
   return (
-    <MuiThemeProvider muiTheme={ThemeDefault}>
+    <MuiThemeProvider theme={ThemeDefault}>
       <div>
         <div style={styles.loginContainer}>
           <Paper style={styles.paper}>
