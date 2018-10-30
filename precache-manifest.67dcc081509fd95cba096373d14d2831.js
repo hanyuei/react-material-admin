@@ -4,16 +4,16 @@ self.__precacheManifest = [
     "url": "/react-material-ui-admin-template/static/media/fontawesome-webfont.af7ae505.woff2"
   },
   {
-    "revision": "aee003a003cb41e7f263",
-    "url": "/react-material-ui-admin-template/static/css/main.23b08e41.chunk.css"
+    "revision": "dd0590529c4408275d36",
+    "url": "/react-material-ui-admin-template/static/css/main.f09d4e64.chunk.css"
   },
   {
     "revision": "011201ab56695ce86ea2f190bce2670b",
     "url": "/react-material-ui-admin-template/static/media/favicon.011201ab.ico"
   },
   {
-    "revision": "a18a5ab5e111f1da2c1c",
-    "url": "/react-material-ui-admin-template/static/js/1.a18a5ab5.chunk.js"
+    "revision": "a29c4d4aef4c28390a5b",
+    "url": "/react-material-ui-admin-template/static/js/1.a29c4d4a.chunk.js"
   },
   {
     "revision": "bfb0654117847e6fc976",
@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "/react-material-ui-admin-template/static/media/material_bg.abe4a318.png"
   },
   {
-    "revision": "aee003a003cb41e7f263",
-    "url": "/react-material-ui-admin-template/static/js/main.aee003a0.chunk.js"
+    "revision": "dd0590529c4408275d36",
+    "url": "/react-material-ui-admin-template/static/js/main.dd059052.chunk.js"
   },
   {
     "revision": "674f50d287a8c48dc19ba404d20fe713",
@@ -44,11 +44,11 @@ self.__precacheManifest = [
     "url": "/react-material-ui-admin-template/static/media/fontawesome-webfont.912ec66d.svg"
   },
   {
-    "revision": "a18a5ab5e111f1da2c1c",
-    "url": "/react-material-ui-admin-template/static/css/1.11e6f8bf.chunk.css"
+    "revision": "a29c4d4aef4c28390a5b",
+    "url": "/react-material-ui-admin-template/static/css/1.c22b5b25.chunk.css"
   },
   {
-    "revision": "a1816126e7789209899f68cbdef06cb8",
+    "revision": "bddb2cc05aea0b656dedf6a754f60d62",
     "url": "/react-material-ui-admin-template/index.html"
   }
 ];
