@@ -7,13 +7,11 @@ import ThemeDefault from "./theme-default";
 
 export default (
   <Router>
-    <div>
+    <MuiThemeProvider theme={ThemeDefault}>
       <Switch>
         <Route exact path="/login" component={Login} />
-        <MuiThemeProvider theme={ThemeDefault}>
-          <Route path="/" component={App} />
-        </MuiThemeProvider>
+        <Route path="/" component={App} />
       </Switch>
-    </div>
+    </MuiThemeProvider>
   </Router>
 );

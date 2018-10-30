@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Drawer from "@material-ui/core/Drawer";
-import Typography from "@material-ui/core/Typography";
 import { blue } from "@material-ui/core/colors";
 import MenuItem from "@material-ui/core/MenuItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -24,7 +23,7 @@ const drawStyles = theme => {
     logo: {
       cursor: "pointer",
       fontSize: 22,
-      color: Typography.textFullWhite,
+      color: "white",
       lineHeight: "64px",
       fontWeight: 300,
       backgroundColor: blue[500],
