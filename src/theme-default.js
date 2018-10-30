@@ -32,8 +32,10 @@ const themeDefault = createMuiTheme({
   },
   raisedButton: {
     primaryColor: blue[600]
+  },
+  typography: {
+    useNextVariants: true
   }
-  //useNextVariants: true,
 });
 
 export default themeDefault;
