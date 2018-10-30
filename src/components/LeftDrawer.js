@@ -61,7 +61,6 @@ const LeftDrawer = props => {
   let { navDrawerOpen, classes } = props;
   return (
     <Drawer
-      docked={true}
       open={navDrawerOpen}
       variant="persistent"
       classes={{
@@ -73,12 +72,12 @@ const LeftDrawer = props => {
         <Avatar
           src="https://material-ui.com/static/images/uxceo-128.jpg"
           size={50}
-          classes={classes.avatarIcon}
+          classes={{ root: classes.avatarIcon }}
         />
         <span className={classes.avatarSpan}>{props.username}</span>
       </div>
       {props.menus.map((menu, index) => (
-        <Link to={menu.link}>
+        <Link key={index} to={menu.link}>
           <MenuItem
             key={index}
             classes={{ root: classes.menuItem }}

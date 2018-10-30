@@ -77,8 +77,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  children: PropTypes.element,
-  width: PropTypes.number
+  children: PropTypes.element
 };
 
 export default withWidth()(App);

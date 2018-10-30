@@ -47,8 +47,8 @@ const RecentlyProducts = props => {
           </ListSubheader>
         }
       >
-        {props.data.map(item => (
-          <ListItem>
+        {props.data.map((item, idx) => (
+          <ListItem key={idx}>
             <Avatar>
               <Wallpaper />
             </Avatar>
