@@ -9,9 +9,9 @@ import ListSubheader from "@material-ui/core/ListSubheader";
 import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import IconMenu from "@material-ui/core/Menu";
+import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import { grey, cyan } from "@material-ui/core/colors";
+import { cyan } from "@material-ui/core/colors";
 import Wallpaper from "@material-ui/icons/Wallpaper";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -23,47 +23,71 @@ const styles = {
     color: "white"
   }
 };
+class RecentlyProducts extends React.Component {
+  state = {
+    anchorEl: null
+  };
 
-const RecentlyProducts = props => {
-  const { classes } = props;
-  const iconButtonElement = (
-    <IconButton touch={true} tooltipPosition="bottom-left">
-      <MoreVertIcon color={grey[400]} />
-    </IconButton>
-  );
+  handleClick = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
 
-  const rightIconMenu = (
-    <IconMenu iconButtonElement={iconButtonElement}>
-      <MenuItem>View</MenuItem>
-    </IconMenu>
-  );
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
 
-  return (
-    <Paper>
-      <List
-        subheader={
-          <ListSubheader classes={{ root: classes.subheader }}>
-            Recent Products
-          </ListSubheader>
-        }
+  render() {
+    const { classes, data } = this.props;
+    const { anchorEl } = this.state;
+
+    const rightIconMenu = (
+      <Menu
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        onClose={this.handleClose}
       >
-        {props.data.map((item, idx) => (
-          <ListItem key={idx}>
-            <Avatar>
-              <Wallpaper />
-            </Avatar>
-            <ListItemText primary={item.title} secondary={item.text} />
-            <ListItemSecondaryAction>
-              {/* {rightIconMenu} */}
-              {rightIconMenu}
-              <MoreVertIcon color={grey[400]} />
-            </ListItemSecondaryAction>
-          </ListItem>
-        ))}
-      </List>
-    </Paper>
-  );
-};
+        <MenuItem onClick={this.handleClose}>View</MenuItem>
+      </Menu>
+    );
+
+    const iconButtonElement = (
+      <div>
+        <IconButton
+          touch={true}
+          tooltipPosition="bottom-left"
+          onClick={this.handleClick}
+        >
+          <MoreVertIcon color={"action"} />
+        </IconButton>
+        {rightIconMenu}
+      </div>
+    );
+
+    return (
+      <Paper>
+        <List
+          subheader={
+            <ListSubheader classes={{ root: classes.subheader }}>
+              Recent Products
+            </ListSubheader>
+          }
+        >
+          {data.map((item, idx) => (
+            <ListItem key={idx}>
+              <Avatar>
+                <Wallpaper />
+              </Avatar>
+              <ListItemText primary={item.title} secondary={item.text} />
+              <ListItemSecondaryAction>
+                {iconButtonElement}
+              </ListItemSecondaryAction>
+            </ListItem>
+          ))}
+        </List>
+      </Paper>
+    );
+  }
+}
 
 RecentlyProducts.propTypes = {
   data: PropTypes.array
