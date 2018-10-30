@@ -35,6 +35,7 @@ const BrowserUsage = props => {
             <ResponsiveContainer>
               <PieChart>
                 <Pie
+                  dataKey={"brower-usage"}
                   innerRadius={80}
                   outerRadius={130}
                   data={props.data}

@@ -39,13 +39,10 @@ class RecentlyProducts extends React.Component {
   render() {
     const { classes, data } = this.props;
     const { anchorEl } = this.state;
+    const open = Boolean(anchorEl);
 
     const rightIconMenu = (
-      <Menu
-        anchorEl={anchorEl}
-        open={Boolean(anchorEl)}
-        onClose={this.handleClose}
-      >
+      <Menu anchorEl={anchorEl} open={open} onClose={this.handleClose}>
         <MenuItem onClick={this.handleClose}>View</MenuItem>
       </Menu>
     );
@@ -53,8 +50,9 @@ class RecentlyProducts extends React.Component {
     const iconButtonElement = (
       <div>
         <IconButton
-          touch={true}
-          tooltipPosition="bottom-left"
+          aria-label="More"
+          aria-owns={open ? "long-menu" : null}
+          aria-haspopup="true"
           onClick={this.handleClick}
         >
           <MoreVertIcon color={"action"} />
