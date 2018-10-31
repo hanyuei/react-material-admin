@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import AppBar from "@material-ui/core/AppBar";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -15,6 +16,21 @@ import { fade } from "@material-ui/core/styles/colorManipulator";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen
+    })
+  },
+  appBarShift: {
+    // marginLeft: theme.drawer.width,
+    width: `calc(100% - ${theme.drawer.width}px)`,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen
+    })
+  },
   root: {
     width: "100%"
   },
@@ -108,8 +124,7 @@ class Header extends React.Component {
   };
 
   render() {
-    const { handleChangeRequestNavDrawer, classes } = this.props;
-    const customStyles = this.props.styles || {};
+    const { handleChangeRequestNavDrawer, classes, navDrawerOpen } = this.props;
 
     const { anchorEl } = this.state;
     const isMenuOpen = Boolean(anchorEl);
@@ -171,7 +186,11 @@ class Header extends React.Component {
 
     return (
       <div>
-        <AppBar style={customStyles}>
+        <AppBar
+          className={classNames(classes.appBar, {
+            [classes.appBarShift]: navDrawerOpen
+          })}
+        >
           <Toolbar>
             <IconButton
               className={classes.menuButton}

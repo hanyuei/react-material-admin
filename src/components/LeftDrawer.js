@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import Drawer from "@material-ui/core/Drawer";
 import { blue } from "@material-ui/core/colors";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -8,17 +9,27 @@ import { Link } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import { withStyles } from "@material-ui/core/styles";
 
-const drawerWidth = 240;
-
 const drawStyles = theme => {
   return {
     drawerPaper: {
-      width: drawerWidth,
+      width: theme.drawer.width,
       backgroundColor: "rgb(33, 33, 33)",
       color: "white",
       borderRight: "0px",
       boxShadow:
         "rgba(0, 0, 0, 0.16) 0px 3px 10px, rgba(0, 0, 0, 0.23) 0px 3px 10px"
+    },
+    drawerPaperClose: {
+      overflowX: "hidden",
+      transition: theme.transitions.create("width", {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen
+      }),
+      width: theme.drawer.miniWidth
+      // width: theme.spacing.unit * 7,
+      // [theme.breakpoints.up("sm")]: {
+      //   width: theme.spacing.unit * 9
+      // }
     },
     logo: {
       cursor: "pointer",
@@ -31,19 +42,21 @@ const drawStyles = theme => {
       height: 64
     },
     avatarRoot: {
-      padding: "15px 0 20px 15px",
+      padding: "16px 0 10px 15px",
       backgroundImage: "url(" + require("../images/material_bg.png") + ")",
       height: 45,
       display: "flex"
     },
+    avatarRootMini: {
+      padding: "15px 0 10px 10px"
+    },
     avatarIcon: {
       float: "left",
       display: "block",
-      marginRight: 15,
       boxShadow: "0px 0px 0px 8px rgba(0,0,0,0.2)"
     },
     avatarSpan: {
-      paddingTop: 12,
+      paddingTop: 8,
       paddingLeft: 24,
       display: "block",
       color: "white",
@@ -62,16 +75,24 @@ const LeftDrawer = props => {
   return (
     <Drawer
       open={navDrawerOpen}
-      variant="persistent"
+      variant="permanent"
       classes={{
-        paper: classes.drawerPaper
+        paper: classNames(
+          classes.drawerPaper,
+          !navDrawerOpen && classes.drawerPaperClose
+        )
       }}
     >
       <div className={classes.logo}>Material Admin</div>
-      <div className={classes.avatarRoot}>
+      <div
+        className={classNames(
+          classes.avatarRoot,
+          !navDrawerOpen && classes.avatarRootMini
+        )}
+      >
         <Avatar
           src="https://material-ui.com/static/images/uxceo-128.jpg"
-          size={50}
+          size={navDrawerOpen ? 48 : 32}
           classes={{ root: classes.avatarIcon }}
         />
         <span className={classes.avatarSpan}>{props.username}</span>

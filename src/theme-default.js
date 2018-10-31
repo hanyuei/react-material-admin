@@ -28,7 +28,8 @@ const themeDefault = createMuiTheme({
   drawer: {
     width: 240,
     color: grey[900],
-    backgroundColor: black
+    backgroundColor: black,
+    miniWidth: 56
   },
   raisedButton: {
     primaryColor: blue[600]
