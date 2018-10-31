@@ -12,7 +12,7 @@ This is the very first version, feel free to use for any app. Contributions are 
 Demo
 ----
 
-You can find a demo [here](https://zhuang17.github.io/react-material-ui-admin-template).
+You can find a demo [here](https://zhuang17.github.io/react-material-admin).
 
 Installation / Running
 ----------------------
