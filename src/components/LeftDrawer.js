@@ -5,6 +5,7 @@ import Drawer from "@material-ui/core/Drawer";
 import { blue } from "@material-ui/core/colors";
 import MenuItem from "@material-ui/core/MenuItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
+import Hidden from "@material-ui/core/Hidden";
 import { Link } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import { withStyles } from "@material-ui/core/styles";
@@ -26,10 +27,6 @@ const drawStyles = theme => {
         duration: theme.transitions.duration.leavingScreen
       }),
       width: theme.drawer.miniWidth
-      // width: theme.spacing.unit * 7,
-      // [theme.breakpoints.up("sm")]: {
-      //   width: theme.spacing.unit * 9
-      // }
     },
     logo: {
       cursor: "pointer",
@@ -71,18 +68,10 @@ const drawStyles = theme => {
 };
 
 const LeftDrawer = props => {
-  let { navDrawerOpen, classes } = props;
-  return (
-    <Drawer
-      open={navDrawerOpen}
-      variant="permanent"
-      classes={{
-        paper: classNames(
-          classes.drawerPaper,
-          !navDrawerOpen && classes.drawerPaperClose
-        )
-      }}
-    >
+  let { navDrawerOpen, classes, theme, handleChangeRequestNavDrawer } = props;
+
+  const drawerContent = onMenuClick => (
+    <div>
       <div className={classes.logo}>Material Admin</div>
       <div
         className={classNames(
@@ -98,18 +87,53 @@ const LeftDrawer = props => {
         <span className={classes.avatarSpan}>{props.username}</span>
       </div>
       {props.menus.map((menu, index) => (
-        <Link key={index} to={menu.link}>
-          <MenuItem
-            key={index}
-            classes={{ root: classes.menuItem }}
-            // containerElement={
-          >
+        <Link key={index} to={menu.link} onClick={onMenuClick}>
+          <MenuItem key={index} classes={{ root: classes.menuItem }}>
             <ListItemIcon style={{ color: "white" }}>{menu.icon}</ListItemIcon>
             <span>{menu.text}</span>
           </MenuItem>
         </Link>
       ))}
-    </Drawer>
+    </div>
+  );
+
+  return (
+    <div>
+      {/* Mobile screen */}
+      <Hidden mdUp>
+        <Drawer
+          variant="temporary"
+          anchor={theme.direction === "rtl" ? "right" : "left"}
+          open={navDrawerOpen}
+          onClose={handleChangeRequestNavDrawer}
+          classes={{
+            paper: classes.drawerPaper
+          }}
+          ModalProps={{
+            keepMounted: true // Better open performance on mobile.
+          }}
+        >
+          {/* should close drawer modal as well when click on menu */}
+          {drawerContent(handleChangeRequestNavDrawer)}
+        </Drawer>
+      </Hidden>
+
+      {/* Desktop screen */}
+      <Hidden smDown>
+        <Drawer
+          open={navDrawerOpen}
+          variant="permanent"
+          classes={{
+            paper: classNames(
+              classes.drawerPaper,
+              !navDrawerOpen && classes.drawerPaperClose
+            )
+          }}
+        >
+          {drawerContent()}
+        </Drawer>
+      </Hidden>
+    </div>
   );
 };
 

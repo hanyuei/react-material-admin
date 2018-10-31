@@ -14,20 +14,31 @@ import NotFound from "./NotFoundPage";
 const styles = theme => ({
   container: {
     margin: "80px 20px 20px 15px",
-    paddingLeft: theme.drawer.width
+    paddingLeft: theme.drawer.width,
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: 0
+    }
     // width: `calc(100% - ${theme.drawer.width}px)`
   },
   containerFull: {
-    paddingLeft: theme.drawer.miniWidth
-    // width: `calc(100% - ${theme.drawer.miniWidth}px)`
+    paddingLeft: theme.drawer.miniWidth,
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: 0
+    }
   }
 });
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    // nav bar default open in desktop screen, and default closed in mobile screen
     this.state = {
-      navDrawerOpen: true
+      navDrawerOpen:
+        window &&
+        window.innerWidth &&
+        window.innerWidth >= props.theme.breakpoints.values.md
+          ? true
+          : false
     };
   }
 
@@ -52,6 +63,9 @@ class App extends React.Component {
 
         <LeftDrawer
           navDrawerOpen={navDrawerOpen}
+          handleChangeRequestNavDrawer={this.handleChangeRequestNavDrawer.bind(
+            this
+          )}
           menus={Data.menus}
           username="User Admin"
         />
@@ -79,4 +93,4 @@ App.propTypes = {
   children: PropTypes.element
 };
 
-export default withStyles(styles)(App);
+export default withStyles(styles, { withTheme: true })(App);
