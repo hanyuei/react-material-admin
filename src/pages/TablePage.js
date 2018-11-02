@@ -6,13 +6,13 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import Button from "@material-ui/core/Button";
-import { pink, grey } from "@material-ui/core/colors";
+import { withStyles } from "@material-ui/core/styles";
 import ContentCreate from "@material-ui/icons/Create";
 import ContentAdd from "@material-ui/icons/Add";
 import PageBase from "../components/PageBase";
 import Data from "../data";
 
-const TablePage = () => {
+const TablePage = ({ theme }) => {
   const styles = {
     floatingActionButton: {
       margin: 0,
@@ -21,9 +21,6 @@ const TablePage = () => {
       bottom: 20,
       left: "auto",
       position: "fixed"
-    },
-    editButton: {
-      fill: grey[500]
     },
     columns: {
       id: {
@@ -52,7 +49,7 @@ const TablePage = () => {
             mini={true}
             variant="fab"
             style={styles.floatingActionButton}
-            backgroundColor={pink[500]}
+            color="secondary"
           >
             <ContentAdd />
           </Button>
@@ -79,13 +76,7 @@ const TablePage = () => {
                 </TableCell>
                 <TableCell style={styles.columns.edit}>
                   <Link className="button" to="/form">
-                    <Button
-                      mini={true}
-                      variant="fab"
-                      zDepth={0}
-                      backgroundColor={grey[200]}
-                      iconStyle={styles.editButton}
-                    >
+                    <Button mini={true} variant="fab" zDepth={0}>
                       <ContentCreate />
                     </Button>
                   </Link>
@@ -99,4 +90,4 @@ const TablePage = () => {
   );
 };
 
-export default TablePage;
+export default withStyles(null, { withTheme: true })(TablePage);

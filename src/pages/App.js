@@ -40,7 +40,7 @@ const styles = () => ({
     opacity: 0.9,
     padding: 0,
     zIndex: 999,
-    position: "absolute",
+    position: "fixed",
     minWidth: 48,
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0
@@ -80,11 +80,9 @@ class App extends React.Component {
   }
 
   handleChangeTheme(colorOption) {
-    console.log("color option selected:", colorOption);
     const theme = customTheme({
       palette: colorOption
     });
-    console.log("theme now:", colorOption);
     this.setState({
       theme
     });

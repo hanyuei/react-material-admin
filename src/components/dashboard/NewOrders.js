@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Paper from "@material-ui/core/Paper";
-import { purple } from "@material-ui/core/colors";
 import { LineChart, Line, ResponsiveContainer } from "recharts";
+import { withStyles } from "@material-ui/core/styles";
 
-const NewOrders = props => {
+const NewOrders = ({ data, theme }) => {
   const styles = {
     paper: {
-      backgroundColor: purple[500],
+      backgroundColor: theme.palette.primary[600],
       height: 150
     },
     div: {
@@ -18,7 +18,7 @@ const NewOrders = props => {
       fontSize: 24,
       fontWeight: 300,
       color: "white",
-      backgroundColor: purple[600],
+      backgroundColor: theme.palette.primary[600],
       padding: 10
     }
   };
@@ -28,11 +28,11 @@ const NewOrders = props => {
       <div style={{ ...styles.header }}>New Orders</div>
       <div style={styles.div}>
         <ResponsiveContainer>
-          <LineChart data={props.data}>
+          <LineChart data={data}>
             <Line
               type="monotone"
               dataKey="pv"
-              stroke="#8884d8"
+              stroke={theme.palette.secondary[500]}
               strokeWidth={2}
             />
           </LineChart>
@@ -46,4 +46,4 @@ NewOrders.propTypes = {
   data: PropTypes.array
 };
 
-export default NewOrders;
+export default withStyles(null, { withTheme: true })(NewOrders);

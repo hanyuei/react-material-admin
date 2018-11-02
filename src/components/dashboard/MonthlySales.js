@@ -1,14 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Paper from "@material-ui/core/Paper";
-import { white, pink } from "@material-ui/core/colors";
 import { BarChart, Bar, ResponsiveContainer, XAxis } from "recharts";
 import GlobalStyles from "../../styles.scss";
 
-const MonthlySales = props => {
+import { withStyles } from "@material-ui/core/styles";
+
+const MonthlySales = ({ data, theme }) => {
   const styles = {
     paper: {
-      backgroundColor: pink[600],
+      backgroundColor: theme.palette.secondary[600],
       height: 150
     },
     div: {
@@ -19,7 +20,7 @@ const MonthlySales = props => {
     },
     header: {
       color: "white",
-      backgroundColor: pink[500],
+      backgroundColor: theme.palette.secondary[600],
       padding: 10,
       fontSize: 24
     }
@@ -32,9 +33,13 @@ const MonthlySales = props => {
       </div>
       <div style={styles.div}>
         <ResponsiveContainer>
-          <BarChart data={props.data}>
-            <Bar dataKey="uv" fill={pink[500]} />
-            <XAxis dataKey="name" stroke="none" tick={{ fill: white }} />
+          <BarChart data={data}>
+            <Bar dataKey="uv" fill={theme.palette.primary[200]} />
+            <XAxis
+              dataKey="name"
+              stroke="none"
+              tick={{ fill: theme.palette.common.white }}
+            />
           </BarChart>
         </ResponsiveContainer>
       </div>
@@ -46,4 +51,4 @@ MonthlySales.propTypes = {
   data: PropTypes.array
 };
 
-export default MonthlySales;
+export default withStyles(null, { withTheme: true })(MonthlySales);
