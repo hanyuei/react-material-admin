@@ -3,10 +3,6 @@ import Assessment from "@material-ui/icons/Assessment";
 import GridOn from "@material-ui/icons/GridOn";
 import PermIdentity from "@material-ui/icons/PermIdentity";
 import Web from "@material-ui/icons/Web";
-import { cyan, pink, purple } from "@material-ui/core/colors";
-import ExpandLess from "@material-ui/icons/ExpandLess";
-import ExpandMore from "@material-ui/icons/ExpandMore";
-import ChevronRight from "@material-ui/icons/ChevronRight";
 
 const data = {
   menus: [
@@ -70,9 +66,9 @@ const data = {
       { pv: 4300 }
     ],
     browserUsage: [
-      { name: "Chrome", value: 800, color: cyan[600], icon: <ExpandMore /> },
-      { name: "Firefox", value: 300, color: pink[600], icon: <ChevronRight /> },
-      { name: "Safari", value: 300, color: purple[600], icon: <ExpandLess /> }
+      { name: "Chrome", value: 800 },
+      { name: "Firefox", value: 300 },
+      { name: "Safari", value: 300 }
     ]
   }
 };
