@@ -9,7 +9,7 @@ import Help from "@material-ui/icons/Help";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { Link } from "react-router-dom";
-import ThemeDefault from "../theme-default";
+import theme from "../theme";
 
 const LoginPage = () => {
   const styles = {
@@ -73,7 +73,7 @@ const LoginPage = () => {
   };
 
   return (
-    <MuiThemeProvider theme={ThemeDefault}>
+    <MuiThemeProvider theme={theme}>
       <div>
         <div style={styles.loginContainer}>
           <Paper style={styles.paper}>

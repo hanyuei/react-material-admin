@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import Drawer from "@material-ui/core/Drawer";
-import { blue } from "@material-ui/core/colors";
 import MenuItem from "@material-ui/core/MenuItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import Hidden from "@material-ui/core/Hidden";
@@ -34,7 +33,7 @@ const drawStyles = theme => {
       color: "white",
       lineHeight: "64px",
       fontWeight: 300,
-      backgroundColor: blue[500],
+      backgroundColor: theme.palette.primary[500],
       paddingLeft: 40,
       height: 64
     },
@@ -68,7 +67,7 @@ const drawStyles = theme => {
 };
 
 const LeftDrawer = props => {
-  let { navDrawerOpen, classes, theme, handleChangeRequestNavDrawer } = props;
+  let { navDrawerOpen, classes, theme, handleChangeNavDrawer } = props;
 
   const drawerContent = onMenuClick => (
     <div>
@@ -105,7 +104,7 @@ const LeftDrawer = props => {
           variant="temporary"
           anchor={theme.direction === "rtl" ? "right" : "left"}
           open={navDrawerOpen}
-          onClose={handleChangeRequestNavDrawer}
+          onClose={handleChangeNavDrawer}
           classes={{
             paper: classes.drawerPaper
           }}
@@ -114,7 +113,7 @@ const LeftDrawer = props => {
           }}
         >
           {/* should close drawer modal as well when click on menu */}
-          {drawerContent(handleChangeRequestNavDrawer)}
+          {drawerContent(handleChangeNavDrawer)}
         </Drawer>
       </Hidden>
 

@@ -124,7 +124,7 @@ class Header extends React.Component {
   };
 
   render() {
-    const { handleChangeRequestNavDrawer, classes, navDrawerOpen } = this.props;
+    const { handleChangeNavDrawer, classes, navDrawerOpen } = this.props;
 
     const { anchorEl } = this.state;
     const isMenuOpen = Boolean(anchorEl);
@@ -196,7 +196,7 @@ class Header extends React.Component {
               className={classes.menuButton}
               color="inherit"
               aria-label="Open drawer"
-              onClick={handleChangeRequestNavDrawer}
+              onClick={handleChangeNavDrawer}
             >
               <MenuIcon />
             </IconButton>
@@ -259,7 +259,7 @@ class Header extends React.Component {
 
 Header.propTypes = {
   styles: PropTypes.object,
-  handleChangeRequestNavDrawer: PropTypes.func
+  handleChangeNavDrawer: PropTypes.func
 };
 
 export default withStyles(styles)(Header);
