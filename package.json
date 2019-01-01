@@ -8,6 +8,7 @@
     "classnames": "^2.2.6",
     "font-awesome": "^4.7.0",
     "gh-pages": "^2.0.1",
+    "mdi-material-ui": "^5.7.0",
     "prop-types": "latest",
     "react": "latest",
     "react-dom": "latest",
