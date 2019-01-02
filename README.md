@@ -1,26 +1,20 @@
-
-React Ui-Material Admin Template
-================================
-
-Thanks to [rafaelhz's template](https://github.com/rafaelhz/react-material-admin-template).
-This repo use the latest react (16.x) & material-ui (3.x) version and create-react-app to rewrite the admin template.
+# React Ui-Material Admin Template
 
 This is a simple responsive admin template using [React](https://facebook.github.io/react/) and [Material-UI](http://www.material-ui.com/) components.
 
+using [create-react-app react-scripts](https://github.com/facebook/create-react-app) to start.
+
 This is the very first version, feel free to use for any app. Contributions are always welcome!
 
-Demo
-----
+## Demo
 
 You can find a demo [here](https://zhuang17.github.io/react-material-admin).
 
-Installation / Running
-----------------------
+## Installation / Running
 
-*for dev*
+_for dev_
 
 ```sh
-
 git clone <repository-url>
 
 # change into the new directory
@@ -29,18 +23,15 @@ npm install
 npm start # will run the app
 
 # Visit the app at http://localhost:3000
-
 ```
 
-*for test*
+_for test_
 
 ```
 npm run test
 ```
 
-
-
-*for Production*
+_for Production_
 
 ```sh
 npm run build
@@ -49,17 +40,15 @@ cd build
 
 # start a static server serving ./build dir, eg node serve/http-server or serve in express using express.static
 serve -s build
-
 ```
 
-Docs
---------------
+## Docs
 
 - compile & build & test
 
   check the [create-react-app react-scripts](https://github.com/facebook/create-react-app) doc for more information.
 
-- material-ui 
+- material-ui
 
   https://material-ui.com
 
@@ -74,9 +63,17 @@ Docs
   now switch to version 4.x, it's a complete rewrite from the previous react-router version.
   https://reacttraining.com/react-router/web/example/basic
 
+- eslint
+  using [eslint](https://eslint.org/) for js/react code lint.
+  using [prettier](https://prettier.io/) for code styling
 
-License
--------
+  `npm run lint` will show the lint result.
+
+## Others
+
+Thanks to [rafaelhz's template](https://github.com/rafaelhz/react-material-admin-template).
+This repo first use the latest react (16.x) & material-ui (3.x) version and create-react-app to rewrite the admin template.
+
+## License
+
 MIT
-
-
