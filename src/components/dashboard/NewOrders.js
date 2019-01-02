@@ -43,7 +43,8 @@ const NewOrders = ({ data, theme }) => {
 };
 
 NewOrders.propTypes = {
-  data: PropTypes.array
+  data: PropTypes.array,
+  theme: PropTypes.object
 };
 
 export default withStyles(null, { withTheme: true })(NewOrders);

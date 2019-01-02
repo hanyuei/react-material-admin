@@ -48,7 +48,8 @@ const MonthlySales = ({ data, theme }) => {
 };
 
 MonthlySales.propTypes = {
-  data: PropTypes.array
+  data: PropTypes.array,
+  theme: PropTypes.object
 };
 
 export default withStyles(null, { withTheme: true })(MonthlySales);

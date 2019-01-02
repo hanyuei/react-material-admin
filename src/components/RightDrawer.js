@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import Drawer from "@material-ui/core/Drawer";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -64,5 +66,12 @@ const RightDrawer = ({
     </div>
   </Drawer>
 );
+
+RightDrawer.propTypes = {
+  rightDrawerOpen: PropTypes.bool,
+  handleChangeRightDrawer: PropTypes.func,
+  handleChangeTheme: PropTypes.func,
+  classes: PropTypes.object
+};
 
 export default withStyles(style)(RightDrawer);

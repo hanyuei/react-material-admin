@@ -139,7 +139,10 @@ const LeftDrawer = props => {
 LeftDrawer.propTypes = {
   navDrawerOpen: PropTypes.bool,
   menus: PropTypes.array,
-  username: PropTypes.string
+  username: PropTypes.string,
+  classes: PropTypes.object,
+  theme: PropTypes.object,
+  handleChangeNavDrawer: PropTypes.func
 };
 
 export default withStyles(drawStyles, { withTheme: true })(LeftDrawer);

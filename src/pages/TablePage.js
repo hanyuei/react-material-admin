@@ -12,7 +12,7 @@ import ContentAdd from "@material-ui/icons/Add";
 import PageBase from "../components/PageBase";
 import Data from "../data";
 
-const TablePage = ({ theme }) => {
+const TablePage = () => {
   const styles = {
     floatingActionButton: {
       margin: 0,

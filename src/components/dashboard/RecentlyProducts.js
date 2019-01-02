@@ -24,9 +24,12 @@ const styles = {
   }
 };
 class RecentlyProducts extends React.Component {
-  state = {
-    anchorEl: null
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      anchorEl: null
+    };
+  }
 
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -88,7 +91,8 @@ class RecentlyProducts extends React.Component {
 }
 
 RecentlyProducts.propTypes = {
-  data: PropTypes.array
+  data: PropTypes.array,
+  classes: PropTypes.object
 };
 
 export default withStyles(styles)(RecentlyProducts);

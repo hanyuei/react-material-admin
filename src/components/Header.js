@@ -102,10 +102,14 @@ const styles = theme => ({
 });
 
 class Header extends React.Component {
-  state = {
-    anchorEl: null,
-    mobileMoreAnchorEl: null
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      anchorEl: null,
+      mobileMoreAnchorEl: null
+    };
+  }
 
   handleProfileMenuOpen = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -272,7 +276,9 @@ class Header extends React.Component {
 
 Header.propTypes = {
   styles: PropTypes.object,
-  handleChangeNavDrawer: PropTypes.func
+  handleChangeNavDrawer: PropTypes.func,
+  classes: PropTypes.object,
+  navDrawerOpen: PropTypes.bool
 };
 
 export default withStyles(styles)(Header);
