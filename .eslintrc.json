@@ -1,0 +1,46 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react"
+  ],
+  "parser": "babel-eslint",
+  "plugins": ["react", "prettier"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    },
+    "ecmaVersion": 2017,
+    "sourceType": "module"
+  },
+  "globals": {
+    "localStorage": true,
+    "ga": true,
+    "fetch": true,
+    "window": true,
+    "document": true,
+    "Raven": true,
+    "ENV": true
+  },
+  "rules": {
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "double"],
+    "semi": ["error", "always"],
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error"
+  },
+  "overrides": [
+    {
+      "files": ["src/*.js", "src/*.jsx"],
+      "excludedFiles": "**/*.spec.js"
+    }
+  ]
+}

@@ -22,7 +22,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "lint": "eslint --ext .js --ext .jsx src/"
   },
   "browserslist": [
     ">0.2%",
@@ -31,10 +32,16 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "chai": "^4.2.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
+    "eslint": "^5.11.1",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.1",
     "node-sass": "^4.9.4",
-    "prettier": "1.14.3"
+    "prettier": "^1.14.3",
+    "prettier-eslint": "^8.8.2"
   }
 }
