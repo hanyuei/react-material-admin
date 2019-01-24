@@ -1,4 +1,6 @@
-# React Ui-Material Admin Template
+# React Material-UI Admin Template
+
+[![CircleCI](https://circleci.com/gh/zhuang17/react-material-admin.svg?style=svg)](https://circleci.com/gh/zhuang17/react-material-admin)
 
 This is a simple responsive admin template using [React](https://facebook.github.io/react/) and [Material-UI](http://www.material-ui.com/) components.
 
