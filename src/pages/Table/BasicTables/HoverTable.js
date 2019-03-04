@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import Data from "../../../data";
 import styles from "./tableColumnStyle";
 
-const SimpleTable = () => {
+const HoverTable = () => {
   return (
     <Card>
       <CardContent>
@@ -46,4 +46,4 @@ const SimpleTable = () => {
   );
 };
 
-export default SimpleTable;
+export default HoverTable;

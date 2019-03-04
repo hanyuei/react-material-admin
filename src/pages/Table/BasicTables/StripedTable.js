@@ -20,7 +20,7 @@ const stripedTableStyle = theme => ({
   }
 });
 
-const TablePage = ({ classes }) => {
+const StripedTable = ({ classes }) => {
   return (
     <Card>
       <CardContent>
@@ -55,4 +55,4 @@ const TablePage = ({ classes }) => {
   );
 };
 
-export default withStyles(stripedTableStyle, { withTheme: true })(TablePage);
+export default withStyles(stripedTableStyle, { withTheme: true })(StripedTable);
