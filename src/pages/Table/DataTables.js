@@ -9,8 +9,8 @@ import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
 import ContentCreate from "@material-ui/icons/Create";
 import ContentAdd from "@material-ui/icons/Add";
-import PageBase from "../components/PageBase";
-import Data from "../data";
+import PageBase from "../../components/PageBase";
+import Data from "../../data";
 
 const TablePage = () => {
   const styles = {

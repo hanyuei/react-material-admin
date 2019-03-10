@@ -10,8 +10,8 @@ import Data from "../data";
 import Dashboard from "./DashboardPage";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Form from "./FormPage";
-// import Table from "./TablePage";
-import Table from "./Table/BasicTables";
+import BasicTable from "./Table/BasicTables";
+import DataTable from "./Table/DataTables";
 import NotFound from "./NotFoundPage";
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import defaultTheme, { customTheme } from "../theme";
@@ -128,7 +128,8 @@ class App extends React.Component {
             <Route exact path="/" component={Dashboard} />
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/form" component={Form} />
-            <Route path="/table" component={Table} />
+            <Route path="/table/basic" component={BasicTable} />
+            <Route path="/table/data" component={DataTable} />
             <Route component={NotFound} />
           </Switch>
         </div>

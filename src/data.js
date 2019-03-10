@@ -3,12 +3,30 @@ import Assessment from "@material-ui/icons/Assessment";
 import GridOn from "@material-ui/icons/GridOn";
 import PermIdentity from "@material-ui/icons/PermIdentity";
 import Web from "@material-ui/icons/Web";
+import BorderClear from "@material-ui/icons/BorderClear";
+import BorderOuter from "@material-ui/icons/BorderOuter";
 
 const data = {
   menus: [
     { text: "DashBoard", icon: <Assessment />, link: "/dashboard" },
     { text: "Form Page", icon: <Web />, link: "/form" },
-    { text: "Table Page", icon: <GridOn />, link: "/table" },
+    {
+      text: "Table Page",
+      icon: <GridOn />,
+      // link: "/table",
+      subMenus: [
+        {
+          text: "Basic Table",
+          icon: <BorderClear />,
+          link: "/table/basic"
+        },
+        {
+          text: "Data Table",
+          icon: <BorderOuter />,
+          link: "/table/data"
+        }
+      ]
+    },
     { text: "Login Page", icon: <PermIdentity />, link: "/login" }
   ],
   tablePage: {
