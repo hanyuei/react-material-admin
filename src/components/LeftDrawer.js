@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import { withStyles } from "@material-ui/core/styles";
 
+import NestedMenuItem from "./NestedMenuItem";
+
 const drawStyles = theme => {
   return {
     drawerPaper: {
@@ -69,7 +71,7 @@ const drawStyles = theme => {
 const LeftDrawer = props => {
   let { navDrawerOpen, classes, theme, handleChangeNavDrawer } = props;
 
-  const drawerContent = onMenuClick => (
+  const drawerContent = () => (
     <div>
       <div className={classes.logo}>Material Admin</div>
       <div
@@ -86,12 +88,7 @@ const LeftDrawer = props => {
         <span className={classes.avatarSpan}>{props.username}</span>
       </div>
       {props.menus.map((menu, index) => (
-        <Link key={index} to={menu.link} onClick={onMenuClick}>
-          <MenuItem key={index} classes={{ root: classes.menuItem }}>
-            <ListItemIcon style={{ color: "white" }}>{menu.icon}</ListItemIcon>
-            <span>{menu.text}</span>
-          </MenuItem>
-        </Link>
+        <NestedMenuItem key={index} menu={menu} navDrawerOpen={navDrawerOpen} />
       ))}
     </div>
   );
