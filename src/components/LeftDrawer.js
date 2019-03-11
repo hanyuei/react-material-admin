@@ -7,6 +7,7 @@ import Avatar from "@material-ui/core/Avatar";
 import { withStyles } from "@material-ui/core/styles";
 
 import NestedMenuItem from "./NestedMenuItem";
+import data from "../data";
 
 const drawStyles = theme => {
   return {
@@ -78,11 +79,11 @@ const LeftDrawer = props => {
         )}
       >
         <Avatar
-          src="https://material-ui.com/static/images/uxceo-128.jpg"
+          src={data.user.avatar}
           size={navDrawerOpen ? 48 : 32}
           classes={{ root: classes.avatarIcon }}
         />
-        <span className={classes.avatarSpan}>{props.username}</span>
+        <span className={classes.avatarSpan}>{data.user.userName}</span>
       </div>
       {props.menus.map((menu, index) => (
         <NestedMenuItem key={index} menu={menu} navDrawerOpen={navDrawerOpen} />

@@ -104,7 +104,6 @@ class App extends React.Component {
           navDrawerOpen={navDrawerOpen}
           handleChangeNavDrawer={this.handleChangeNavDrawer}
           menus={Data.menus}
-          username="User Admin"
         />
         <ButtonBase
           color="inherit"

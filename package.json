@@ -5,6 +5,7 @@
     "@material-ui/core": "^3.2.2",
     "@material-ui/icons": "^3.0.1",
     "classnames": "^2.2.6",
+    "faker": "^4.1.0",
     "font-awesome": "^4.7.0",
     "mdi-material-ui": "^5.7.0",
     "prop-types": "latest",

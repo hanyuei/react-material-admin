@@ -1,4 +1,5 @@
 import React from "react";
+import Faker from "faker";
 import Assessment from "@material-ui/icons/Assessment";
 import GridOn from "@material-ui/icons/GridOn";
 import PermIdentity from "@material-ui/icons/PermIdentity";
@@ -29,6 +30,10 @@ const data = {
     },
     { text: "Login Page", icon: <PermIdentity />, link: "/login" }
   ],
+  user: {
+    userName: `${Faker.name.firstName()} ${Faker.name.lastName()}`,
+    avatar: Faker.image.avatar()
+  },
   tablePage: {
     items: [
       { id: 1, name: "Product 1", price: "$50.00", category: "Category 1" },
