@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { cyan, pink, purple, orange } from "@material-ui/core/colors";
 import Assessment from "@material-ui/icons/Assessment";
 import Face from "@material-ui/icons/Face";
@@ -20,12 +21,14 @@ const DashboardPage = () => {
 
       <Grid container spacing={24}>
         <Grid item xs={12} sm={6} md={3}>
-          <InfoBox
-            Icon={ShoppingCart}
-            color={pink[600]}
-            title="Total Profit"
-            value="1500k"
-          />
+          <Link to="/table/data" className="button">
+            <InfoBox
+              Icon={ShoppingCart}
+              color={pink[600]}
+              title="Total Profit"
+              value="1500k"
+            />
+          </Link>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
           <InfoBox
