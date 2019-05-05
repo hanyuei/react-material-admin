@@ -1,10 +1,10 @@
 {
   "main.css": "/react-material-admin/static/css/main.abe15ab5.chunk.css",
-  "main.js": "/react-material-admin/static/js/main.889dc3bb.chunk.js",
-  "main.js.map": "/react-material-admin/static/js/main.889dc3bb.chunk.js.map",
+  "main.js": "/react-material-admin/static/js/main.0e7edcd7.chunk.js",
+  "main.js.map": "/react-material-admin/static/js/main.0e7edcd7.chunk.js.map",
   "static/css/1.d0f82419.chunk.css": "/react-material-admin/static/css/1.d0f82419.chunk.css",
-  "static/js/1.7945ec16.chunk.js": "/react-material-admin/static/js/1.7945ec16.chunk.js",
-  "static/js/1.7945ec16.chunk.js.map": "/react-material-admin/static/js/1.7945ec16.chunk.js.map",
+  "static/js/1.a955f8b8.chunk.js": "/react-material-admin/static/js/1.a955f8b8.chunk.js",
+  "static/js/1.a955f8b8.chunk.js.map": "/react-material-admin/static/js/1.a955f8b8.chunk.js.map",
   "runtime~main.js": "/react-material-admin/static/js/runtime~main.87567143.js",
   "runtime~main.js.map": "/react-material-admin/static/js/runtime~main.87567143.js.map",
   "static/media/material_bg.png": "/react-material-admin/static/media/material_bg.abe4a318.png",
@@ -13,6 +13,6 @@
   "static/css/main.abe15ab5.chunk.css.map": "/react-material-admin/static/css/main.abe15ab5.chunk.css.map",
   "static/css/1.d0f82419.chunk.css.map": "/react-material-admin/static/css/1.d0f82419.chunk.css.map",
   "index.html": "/react-material-admin/index.html",
-  "precache-manifest.71174a09653c152c86432a9573e6c541.js": "/react-material-admin/precache-manifest.71174a09653c152c86432a9573e6c541.js",
+  "precache-manifest.7c40876968b1cb92bf270e4b57741898.js": "/react-material-admin/precache-manifest.7c40876968b1cb92bf270e4b57741898.js",
   "service-worker.js": "/react-material-admin/service-worker.js"
 }
