@@ -24,7 +24,7 @@ yarn.lock
 package-lock.json
 
 # CI
-/.circleci
+.circleci
 
 # vscode
 .vscode
