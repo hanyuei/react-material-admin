@@ -6,7 +6,7 @@ import Hidden from "@material-ui/core/Hidden";
 import Avatar from "@material-ui/core/Avatar";
 import { withStyles } from "@material-ui/core/styles";
 
-import NestedMenuItem from "./NestedMenuItem";
+import Menus from "./Menus";
 import data from "../data";
 
 const drawStyles = theme => {
@@ -16,8 +16,7 @@ const drawStyles = theme => {
       backgroundColor: "rgb(33, 33, 33)",
       color: "white",
       borderRight: "0px",
-      boxShadow:
-        "rgba(0, 0, 0, 0.16) 0px 3px 10px, rgba(0, 0, 0, 0.23) 0px 3px 10px"
+      boxShadow: "rgba(0, 0, 0, 0.16) 0px 3px 10px, rgba(0, 0, 0, 0.23) 0px 3px 10px"
     },
     drawerPaperClose: {
       overflowX: "hidden",
@@ -72,22 +71,11 @@ const LeftDrawer = props => {
   const drawerContent = () => (
     <div>
       <div className={classes.logo}>Material Admin</div>
-      <div
-        className={classNames(
-          classes.avatarRoot,
-          !navDrawerOpen && classes.avatarRootMini
-        )}
-      >
-        <Avatar
-          src={data.user.avatar}
-          size={navDrawerOpen ? 48 : 32}
-          classes={{ root: classes.avatarIcon }}
-        />
+      <div className={classNames(classes.avatarRoot, !navDrawerOpen && classes.avatarRootMini)}>
+        <Avatar src={data.user.avatar} size={navDrawerOpen ? 48 : 32} classes={{ root: classes.avatarIcon }} />
         <span className={classes.avatarSpan}>{data.user.userName}</span>
       </div>
-      {props.menus.map((menu, index) => (
-        <NestedMenuItem key={index} menu={menu} navDrawerOpen={navDrawerOpen} />
-      ))}
+      <Menus menus={props.menus} navDrawerOpen={navDrawerOpen} />
     </div>
   );
 
@@ -118,10 +106,7 @@ const LeftDrawer = props => {
           open={navDrawerOpen}
           variant="permanent"
           classes={{
-            paper: classNames(
-              classes.drawerPaper,
-              !navDrawerOpen && classes.drawerPaperClose
-            )
+            paper: classNames(classes.drawerPaper, !navDrawerOpen && classes.drawerPaperClose)
           }}
         >
           {drawerContent()}
