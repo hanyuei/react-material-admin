@@ -19,44 +19,24 @@ const DashboardPage = () => {
     <div>
       <h3 style={globalStyles.navigation}>Application / Dashboard</h3>
 
-      <Grid container spacing={24}>
+      <Grid container spacing={3}>
         <Grid item xs={12} sm={6} md={3}>
           <Link to="/table/data" className="button">
-            <InfoBox
-              Icon={ShoppingCart}
-              color={pink[600]}
-              title="Total Profit"
-              value="1500k"
-            />
+            <InfoBox Icon={ShoppingCart} color={pink[600]} title="Total Profit" value="1500k" />
           </Link>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
-          <InfoBox
-            Icon={ThumbUp}
-            color={cyan[600]}
-            title="Likes"
-            value="4231"
-          />
+          <InfoBox Icon={ThumbUp} color={cyan[600]} title="Likes" value="4231" />
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
-          <InfoBox
-            Icon={Assessment}
-            color={purple[600]}
-            title="Sales"
-            value="460"
-          />
+          <InfoBox Icon={Assessment} color={purple[600]} title="Sales" value="460" />
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
-          <InfoBox
-            Icon={Face}
-            color={orange[600]}
-            title="New Members"
-            value="248"
-          />
+          <InfoBox Icon={Face} color={orange[600]} title="New Members" value="248" />
         </Grid>
       </Grid>
 
-      <Grid container spacing={24}>
+      <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <NewOrders data={Data.dashBoardPage.newOrders} />
         </Grid>
@@ -64,7 +44,7 @@ const DashboardPage = () => {
           <MonthlySales data={Data.dashBoardPage.monthlySales} />
         </Grid>
       </Grid>
-      <Grid container spacing={24}>
+      <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <RecentlyProducts data={Data.dashBoardPage.recentProducts} />
         </Grid>
