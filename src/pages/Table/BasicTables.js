@@ -22,7 +22,7 @@ const TablePage = () => {
   };
   return (
     <div>
-      <Grid container spacing={24}>
+      <Grid container spacing={3}>
         <Grid item xs={12} sm={6} md={6}>
           <SimpleTable />
         </Grid>
@@ -37,12 +37,7 @@ const TablePage = () => {
         </Grid>
       </Grid>
       <Link to="/form">
-        <Button
-          mini={true}
-          variant="fab"
-          style={styles.floatingActionButton}
-          color="secondary"
-        >
+        <Button mini={true} variant="fab" style={styles.floatingActionButton} color="secondary">
           <ContentAdd />
         </Button>
       </Link>

@@ -56,6 +56,9 @@ serve -s build
 
   https://material-ui.com
 
+  update material-ui from v3 to v4
+  [migration to v4](https://material-ui.com/zh/guides/migration-v3/)
+
   if you are using some material-ui 0.x version, you could check this docs for migration [migration-from-v0-x](https://material-ui.com/guides/migration-v0x/#migration-from-v0-x)
 
 - css

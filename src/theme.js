@@ -1,18 +1,5 @@
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
-import {
-  blue,
-  grey,
-  pink,
-  red,
-  black,
-  deepOrange,
-  orange,
-  teal,
-  green,
-  amber,
-  lime,
-  purple
-} from "@material-ui/core/colors";
+import { blue, grey, pink, red, deepOrange, orange, teal, green, amber, lime, purple } from "@material-ui/core/colors";
 
 export const availableThemes = [
   {
@@ -60,14 +47,14 @@ const defaultTheme = {
   drawer: {
     width: 240,
     color: grey[900],
-    backgroundColor: black,
+    backgroundColor: grey[900],
     miniWidth: 56
   },
   raisedButton: {
     primaryColor: blue[600]
   },
   typography: {
-    useNextVariants: true
+    // useNextVariants: true
   }
 };
 
