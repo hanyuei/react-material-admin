@@ -250,7 +250,7 @@ class Header extends React.Component {
                 aria-haspopup="true"
                 onClick={() =>
                   window.open(
-                    "https://github.com/zhuang17/react-material-admin"
+                    "https://github.com/dali110/react-material-admin"
                   )
                 }
                 color="inherit"
