@@ -68,20 +68,16 @@ class RecentlyProducts extends React.Component {
       <Paper>
         <List
           subheader={
-            <ListSubheader classes={{ root: classes.subheader }}>
-              Recent Products
-            </ListSubheader>
+            <ListSubheader classes={{ root: classes.subheader }}>Recent Products</ListSubheader>
           }
         >
           {data.map((item, idx) => (
             <ListItem key={idx}>
-              <Avatar>
+              <Avatar style={{ marginRight: "10px" }}>
                 <Wallpaper />
               </Avatar>
               <ListItemText primary={item.title} secondary={item.text} />
-              <ListItemSecondaryAction>
-                {iconButtonElement}
-              </ListItemSecondaryAction>
+              <ListItemSecondaryAction>{iconButtonElement}</ListItemSecondaryAction>
             </ListItem>
           ))}
         </List>

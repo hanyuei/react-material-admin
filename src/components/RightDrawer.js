@@ -24,12 +24,7 @@ const style = () => ({
   }
 });
 
-const RightDrawer = ({
-  rightDrawerOpen,
-  handleChangeRightDrawer,
-  handleChangeTheme,
-  classes
-}) => (
+const RightDrawer = ({ rightDrawerOpen, handleChangeRightDrawer, handleChangeTheme, classes }) => (
   <Drawer
     variant="temporary"
     anchor={"right"}
@@ -46,19 +41,18 @@ const RightDrawer = ({
       <h6 style={{ paddingBottom: "10px" }}>Theme Setting</h6>
       {availableThemes.map(theme => (
         <div
+          style={{ paddingLeft: "5px" }}
           key={theme.title}
           onClick={() => handleChangeTheme(theme)}
           className={classes.selectThemeBtn}
         >
-          <div>{theme.title}</div>
+          <em>{theme.title}</em>
           <Grid container>
             <Grid item xs={5}>
               <div style={{ height: "10px", background: theme.primary[500] }} />
             </Grid>
             <Grid item xs={5}>
-              <div
-                style={{ height: "10px", background: theme.secondary[500] }}
-              />
+              <div style={{ height: "10px", background: theme.secondary[500] }} />
             </Grid>
           </Grid>
         </div>
