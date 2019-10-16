@@ -1,5 +1,5 @@
 import React from "react";
-import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
+import { ThemeProvider } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -73,19 +73,14 @@ const LoginPage = () => {
   };
 
   return (
-    <MuiThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <div>
         <div style={styles.loginContainer}>
           <Paper style={styles.paper}>
             <form>
               <TextField hintText="E-mail" label="E-mail" fullWidth={true} />
               <div style={{ marginTop: 16 }}>
-                <TextField
-                  hintText="Password"
-                  label="Password"
-                  fullWidth={true}
-                  type="password"
-                />
+                <TextField hintText="Password" label="Password" fullWidth={true} type="password" />
               </div>
 
               <div style={{ marginTop: 10 }}>
@@ -101,11 +96,7 @@ const LoginPage = () => {
                   label="Remember me"
                 />
                 <Link to="/">
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    style={styles.loginBtn}
-                  >
+                  <Button variant="contained" color="primary" style={styles.loginBtn}>
                     Login
                   </Button>
                 </Link>
@@ -137,7 +128,7 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
-    </MuiThemeProvider>
+    </ThemeProvider>
   );
 };
 

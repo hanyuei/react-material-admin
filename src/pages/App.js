@@ -13,7 +13,7 @@ import Form from "./FormPage";
 import BasicTable from "./Table/BasicTables";
 import DataTable from "./Table/DataTables";
 import NotFound from "./NotFoundPage";
-import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
+import { ThemeProvider } from "@material-ui/core/styles";
 import defaultTheme, { customTheme } from "../theme";
 
 const styles = () => ({
@@ -56,9 +56,7 @@ class App extends React.Component {
       theme: defaultTheme,
       rightDrawerOpen: false,
       navDrawerOpen:
-        window &&
-        window.innerWidth &&
-        window.innerWidth >= defaultTheme.breakpoints.values.md
+        window && window.innerWidth && window.innerWidth >= defaultTheme.breakpoints.values.md
           ? true
           : false
     };
@@ -94,11 +92,8 @@ class App extends React.Component {
     const { navDrawerOpen, rightDrawerOpen, theme } = this.state;
 
     return (
-      <MuiThemeProvider theme={theme}>
-        <Header
-          handleChangeNavDrawer={this.handleChangeNavDrawer}
-          navDrawerOpen={navDrawerOpen}
-        />
+      <ThemeProvider theme={theme}>
+        <Header handleChangeNavDrawer={this.handleChangeNavDrawer} navDrawerOpen={navDrawerOpen} />
 
         <LeftDrawer
           navDrawerOpen={navDrawerOpen}
@@ -117,12 +112,7 @@ class App extends React.Component {
           handleChangeRightDrawer={this.handleChangeRightDrawer}
           handleChangeTheme={this.handleChangeTheme}
         />
-        <div
-          className={classNames(
-            classes.container,
-            !navDrawerOpen && classes.containerFull
-          )}
-        >
+        <div className={classNames(classes.container, !navDrawerOpen && classes.containerFull)}>
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route path="/dashboard" component={Dashboard} />
@@ -132,7 +122,7 @@ class App extends React.Component {
             <Route component={NotFound} />
           </Switch>
         </div>
-      </MuiThemeProvider>
+      </ThemeProvider>
     );
   }
 }
