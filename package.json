@@ -3,12 +3,11 @@
   "version": "3.0.0",
   "dependencies": {
     "@material-ui/core": "^4.5.0",
-    "@material-ui/icons": "^4.5.0",
+    "@material-ui/icons": "^4.9.1",
     "@material-ui/styles": "^4.5.0",
     "classnames": "^2.2.6",
     "faker": "^4.1.0",
     "font-awesome": "^4.7.0",
-    "mdi-material-ui": "^5.7.0",
     "prop-types": "latest",
     "react": "^16.10.2",
     "react-countup": "^4.2.2",

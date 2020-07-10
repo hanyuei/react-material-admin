@@ -6,7 +6,7 @@ import IconButton from "@material-ui/core/IconButton"
 import MenuIcon from "@material-ui/icons/Menu"
 import InputBase from "@material-ui/core/InputBase"
 import SearchIcon from "@material-ui/icons/Search"
-import { GithubCircle } from "mdi-material-ui"
+import GitHub from "@material-ui/icons/GitHub"
 import AccountCircle from "@material-ui/icons/AccountCircle"
 import MailIcon from "@material-ui/icons/Mail"
 import NotificationsIcon from "@material-ui/icons/Notifications"
@@ -255,7 +255,7 @@ class Header extends React.Component {
                 }
                 color="inherit"
               >
-                <GithubCircle />
+                <GitHub />
               </IconButton>
             </div>
             <div className={classes.sectionMobile}>
