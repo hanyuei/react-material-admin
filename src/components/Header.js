@@ -249,9 +249,7 @@ class Header extends React.Component {
                 aria-owns={isMenuOpen ? "material-appbar" : null}
                 aria-haspopup="true"
                 onClick={() =>
-                  window.open(
-                    "https://github.com/dashutadie/react-material-admin"
-                  )
+                  window.open("https://github.com/hanyuei/react-material-admin")
                 }
                 color="inherit"
               >

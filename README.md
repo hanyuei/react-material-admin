@@ -2,7 +2,7 @@
 
 ![React-Material-Admin](https://user-images.githubusercontent.com/6997095/54126976-b748a600-4443-11e9-8109-d7428da26bc6.gif)
 
-[![CircleCI](https://circleci.com/gh/dashutadie/react-material-admin.svg?style=svg)](https://circleci.com/gh/dashutadie/react-material-admin)
+[![CircleCI](https://circleci.com/gh/hanyuei/react-material-admin.svg?style=svg)](https://circleci.com/gh/hanyuei/react-material-admin)
 
 This is a simple responsive admin template using [React](https://facebook.github.io/react/) and [Material-UI](http://www.material-ui.com/) components.
 
@@ -12,7 +12,7 @@ This is the very first version, feel free to use for any app. Contributions are 
 
 ## Demo
 
-You can find a demo [here](https://dashutadie.github.io/react-material-admin).
+You can find a demo [here](https://hanyuei.github.io/react-material-admin).
 
 ## Installation / Running
 
