@@ -1,18 +1,8 @@
-# React Material-UI Admin Template
+# Engadgement Tracker
 
-![React-Material-Admin](https://user-images.githubusercontent.com/6997095/54126976-b748a600-4443-11e9-8109-d7428da26bc6.gif)
-
-[![CircleCI](https://circleci.com/gh/hanyuei/react-material-admin.svg?style=svg)](https://circleci.com/gh/hanyuei/react-material-admin)
-
-This is a simple responsive admin template using [React](https://facebook.github.io/react/) and [Material-UI](http://www.material-ui.com/) components.
-
-using [create-react-app react-scripts](https://github.com/facebook/create-react-app) to start.
-
-This is the very first version, feel free to use for any app. Contributions are always welcome!
 
 ## Demo
 
-You can find a demo [here](https://hanyuei.github.io/react-material-admin).
 
 ## Installation / Running
 
@@ -78,8 +68,7 @@ serve -s build
 
 ## Others
 
-Thanks to [rafaelhz's template](https://github.com/rafaelhz/react-material-admin-template).
-This repo first use the latest react (16.x) & material-ui (3.x) version and create-react-app to rewrite the admin template.
+Thanks to [hanyuei's template](https://github.com/hanyuei/react-material-admin-template).
 
 ## License
 
