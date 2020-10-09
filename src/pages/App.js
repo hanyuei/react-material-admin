@@ -12,6 +12,7 @@ import ButtonBase from "@material-ui/core/ButtonBase";
 import Form from "./FormPage";
 import BasicTable from "./Table/BasicTables";
 import DataTable from "./Table/DataTables";
+import GBEZoomSummary from "./GBEZoomSummary";
 import NotFound from "./NotFoundPage";
 import { ThemeProvider } from "@material-ui/core/styles";
 import defaultTheme, { customTheme } from "../theme";
@@ -116,6 +117,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route path="/dashboard" component={Dashboard} />
+            <Route path="/reports/gbezoomsummary" component={GBEZoomSummary} />
             <Route path="/form" component={Form} />
             <Route path="/table/basic" component={BasicTable} />
             <Route path="/table/data" component={DataTable} />

@@ -4,14 +4,14 @@ import classNames from "classnames"
 import AppBar from "@material-ui/core/AppBar"
 import IconButton from "@material-ui/core/IconButton"
 import MenuIcon from "@material-ui/icons/Menu"
-import InputBase from "@material-ui/core/InputBase"
-import SearchIcon from "@material-ui/icons/Search"
-import GitHub from "@material-ui/icons/GitHub"
+//import InputBase from "@material-ui/core/InputBase"
+//import SearchIcon from "@material-ui/icons/Search"
+//import GitHub from "@material-ui/icons/GitHub"
 import AccountCircle from "@material-ui/icons/AccountCircle"
-import MailIcon from "@material-ui/icons/Mail"
-import NotificationsIcon from "@material-ui/icons/Notifications"
+//import MailIcon from "@material-ui/icons/Mail"
+//import NotificationsIcon from "@material-ui/icons/Notifications"
 import MoreIcon from "@material-ui/icons/MoreVert"
-import Badge from "@material-ui/core/Badge"
+//import Badge from "@material-ui/core/Badge"
 import { Toolbar } from "@material-ui/core"
 import { fade } from "@material-ui/core/styles/colorManipulator"
 import { withStyles } from "@material-ui/core/styles"
@@ -205,6 +205,7 @@ class Header extends React.Component {
             >
               <MenuIcon />
             </IconButton>
+            {/*
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -217,8 +218,10 @@ class Header extends React.Component {
                 }}
               />
             </div>
+              */}
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
+              {/*}
               <IconButton color="inherit">
                 <Badge
                   className={classes.margin}
@@ -237,6 +240,7 @@ class Header extends React.Component {
                   <NotificationsIcon />
                 </Badge>
               </IconButton>
+              {*/}
               <IconButton
                 aria-owns={isMenuOpen ? "material-appbar" : null}
                 aria-haspopup="true"
@@ -244,16 +248,6 @@ class Header extends React.Component {
                 color="inherit"
               >
                 <AccountCircle />
-              </IconButton>
-              <IconButton
-                aria-owns={isMenuOpen ? "material-appbar" : null}
-                aria-haspopup="true"
-                onClick={() =>
-                  window.open("https://github.com/hanyuei/react-material-admin")
-                }
-                color="inherit"
-              >
-                <GitHub />
               </IconButton>
             </div>
             <div className={classes.sectionMobile}>

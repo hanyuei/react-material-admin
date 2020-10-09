@@ -1,0 +1,27 @@
+x Fix start up short cut. Use npm start, not node start in package.json
+x Changed name of app
+x Put app in github - dealt with keychain issue
+x Delayed participant request working
+x Azure DB created
+x Add meeting details to database
+x Add meeting participants to database
+x Isolate data access
+Fix discrepency of meeting duration vs host duration
+x Move app to server
+Verify student-hosted meetings can not be found in Zoom
+Add page for summary report
+List Meetings, getting participants
+Compute zoom number
+SR iterate through GBE staff, 
+Create report json.
+
+
+Good but uses yarn. Dashboard. https://www.creativebloq.com/how-to/create-a-dashboard-app-with-react
+
+
+Retry:
+n9apJILuSsO7MBHYl2nwRg==
+nk2fRyMgQJWJLD2bnV12KQ==
+5462107544 PYvSBJnETwmPr0WK2LCF/w==
+6994252430 / fR5KwafCSt2VDKb378nCGg==
+5122399260 / uYWH6JmoRACb0ObDQO7M5A==
