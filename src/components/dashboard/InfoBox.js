@@ -49,7 +49,7 @@ class InfoBox extends React.Component {
         <div style={styles.content}>
           <span style={styles.text}>{title}</span>
           <div style={styles.number}>
-            <CountUp end={value} separator="," duration={2} />
+            <CountUp end={parseInt(value)} separator="," duration={2} />
           </div>
         </div>
       </Paper>
