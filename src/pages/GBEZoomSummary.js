@@ -9,8 +9,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
-import styles from "./Table/BasicTables/tableColumnStyle";
-import tableData from "../data";
+//import styles from "./Table/BasicTables/tableColumnStyle";
 import { endpoint, key, databaseId } from "../config.js";
 import { CosmosClient } from "@azure/cosmos"
 // TODO move get of summary back to data access
@@ -51,11 +50,13 @@ function GBEZoomNumber(startTimeUTC, firstReportDateUTC) {
           result.zoom = i;
       }
       if (t.format("d") === 5 ) {  //special case of Friday
-          if ((startTime >= 505 && (startTime <= 625 ))) // 8:25 to 10:25
-          result.zoom = 4;      // it's the Friday 8:30
+          if ((startTime >= 505 && (startTime <= 625 ))) { // 8:25 to 10:25
+            result.zoom = 4;      // it's the Friday 8:30
+            console.log("Friday zoom!");
+          }
       }
   };
-  result.day = dayjs(firstReportDateUTC).diff(startTimeUTC,"day");
+  result.day = dayjs(startTimeUTC).diff(firstReportDateUTC,"day");
   console.log(result, t.format("YYYY-MM-DDTHH:mm"));
   return result;
 }
@@ -69,6 +70,7 @@ function createGBESummary(host, startDate, endDate, meetings) {
   const startDateUTC = dayjs(startDate).utc().format("YYYY-MM-DD");
 
   // Do data transformation to show minutes spent in each available Zoom by day
+  console.log("Should have meetings");
   meetings.forEach((m) => {
       var pos = GBEZoomNumber(m.start_time, startDateUTC);
       console.log("pos", pos, m.start_time);
@@ -79,8 +81,13 @@ function createGBESummary(host, startDate, endDate, meetings) {
               found = pList.find((e) => e.name === p.name);
           }
           if (found !== undefined) {
-              if (pos.zoom >= 0) {
-                  found.days[pos.day].zooms[pos.zoom] += p.duration / 60;
+              if (pos.zoom && pos.zoom >= 0 && pos.day && pos.day >=0 ) {
+                  if (found.days[pos.day] > 0) {
+                    console.log("WTF?");
+                  }
+                  found.days[pos.day].zooms[pos.zoom] += p.duration / 60; // Add to number of minutes
+              } else {
+                // todo Handle none academic zoom meetings here
               }
           } else {
               // Make a new paricipant with buckets for paricipation by day and Zoom number
@@ -93,8 +100,8 @@ function createGBESummary(host, startDate, endDate, meetings) {
           }
       });
   });
-  console.log(pList);
-  return pList;       //List of participant with time in each meeting
+  //console.log(pList);
+  return {participants: pList, numDays: numDays};       //List of participant with time in each meeting
 }
 
 async function fetchData(host, startDate, endDate) {
@@ -104,14 +111,15 @@ async function fetchData(host, startDate, endDate) {
   const querySpec = {
       query: `SELECT * FROM meetings m WHERE m.start_time >= '${startDateUTC}' and m.end_time <= '${endDateUTC}' and startswith(m.topic, '${host}')`
   };
-  console.log(querySpec.query);
+  // console.log(querySpec.query);
   try {
       //console.log(container.items);
       const { resources: items } = await container.items  // meetings
         .query(querySpec)
         .fetchAll();
       console.log("Retrieved meetings", items);
-      return items;
+      const {numDays, participants} = createGBESummary(host, startDate, endDate, items);
+      return {meetings: items, numDays: numDays, participants: participants};
   } 
   catch (err) {
       console.log(err);
@@ -120,64 +128,104 @@ async function fetchData(host, startDate, endDate) {
   
 }
 
+
 class GBEZoomSummary extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
       meetings: [],
+      participants: [],
       host: "Rachel Gossett",
       startDate: "2020-10-05",
-      endDate: "2020-10-09"
+      endDate: "2020-10-09",
+      numDays: 0
       }
   }
     
-  componentDidMount() {
-    // fetch('https://some-api.com/harry-potter')
-    // .then((response) => response.json())
-    // .then(booksList => {
-    //     this.setState({ books: booksList });
-    // });
-    var m = fetchData(this.state.host, this.state.startDate, this.state.endDate);
-    console.log("retrieved2", m)
+  async componentDidMount() {
+    const {host, startDate, endDate} = this.state;
+
+    const {meetings, numDays, participants} = await fetchData(host, startDate, endDate);
+    // handle null with message
+    this.setState({...this.state, 
+      participants: participants, 
+      meetings: meetings, 
+      numDays: numDays});
   }
-    
+
+  renderHeadings() {
+    var cols = [];
+    const {numDays, startDate} = this.state;
+    const dt = dayjs(startDate);
+
+    if (numDays <= 0) return;
+
+    cols.push(<TableCell>Participant</TableCell>);
+
+    for (var d=0; d < numDays; d++) {
+      const colDate = dt.add(d, 'day');
+      cols.push(<TableCell>{colDate.format("ddd")}<br/>{colDate.format("MM-DD")}</TableCell>);
+    }
+    return cols;
+  }
+
+  renderParticipant(p) {
+    var dayZooms = [];
+
+    for (var d=0; d < this.state.numDays; d++) {
+      var s = "";
+      for (var z=0; z < p.days[d].zooms.length; z++) {
+        s += Math.round(p.days[d].zooms[z]) + " ";
+      }
+      dayZooms.push(
+        <TableCell>{s}</TableCell>
+      )
+    }
+
+    if (!p || this.state.numDays === 0) {
+      p = (<p>No meetings</p>);
+      return (<TableRow key={p.name} hover={true}>
+        <TableCell>No regular meetings found.</TableCell>
+      </TableRow>)
+    } else {
+      return (
+        <TableRow key={p.name} hover={true}>
+          <TableCell>{p.name}</TableCell>
+          {dayZooms}
+        </TableRow>
+        )
+    }
+  }
 
   render() {
-    console.log(this.state);
+    const { host, meetings, participants, startDate, endDate } = this.state;
+    console.log("State: ", this.state)
+
     return (
-      <Card>
-        <CardContent>
-          <Typography color="textSecondary" gutterBottom>
-            GBE Zoom Summary
-          </Typography>
-          <Divider />
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell style={styles.columns.id}>ID</TableCell>
-                <TableCell style={styles.columns.name}>Name</TableCell>
-                <TableCell style={styles.columns.price}>Price</TableCell>
-                <TableCell style={styles.columns.category}>Category</TableCell>
-              </TableRow>
-            </TableHead>
+    <Card>
+      <CardContent>
+        <Typography color="textSecondary" gutterBottom>
+          GBE Zoom Summary - {host}
+        </Typography>
+        <Divider />
+        <Table>
+          <TableHead>
+            <TableRow>
+              {this.renderHeadings()}
+            </TableRow>
+          </TableHead>
             <TableBody>
-              {tableData.tablePage.items.slice(0, 5).map(item => (
-                <TableRow key={item.id} hover={true}>
-                  <TableCell style={styles.columns.id}>{item.id}</TableCell>
-                  <TableCell style={styles.columns.name}>{item.name}</TableCell>
-                  <TableCell style={styles.columns.price}>{item.price}</TableCell>
-                  <TableCell style={styles.columns.category}>
-                    {item.category}
-                  </TableCell>
-                </TableRow>
+              {participants.map((p, index) => (
+                this.renderParticipant(p)
               ))}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+          </TableBody>
+        </Table>
+      </CardContent>
+    </Card>
     );
-  };
+  }
+
 }
 
 GBEZoomSummary.propTypes = {
