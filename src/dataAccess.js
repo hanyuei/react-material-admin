@@ -5,7 +5,7 @@ const config = require('./config');
 
 // Connect to database
 const CosmosClient = require("@azure/cosmos").CosmosClient;
-const { endpoint, key, databaseId, containerId } = config;
+const { endpoint, key, databaseId } = config;
 const client = new CosmosClient({ endpoint, key });
 const database = client.database(databaseId);
 const container = database.container("meetings");
@@ -15,28 +15,25 @@ var timezone = require('dayjs/plugin/timezone');
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-module.exports = {
+const dataAccess = {
+    // Return the meetings specified in query
+    meetingsFetch: async function (query) {
 
-    meetingAdd: async function (meeting) {
-        meeting.simpleId = meeting.id;          // The meeting id seen in link
-        ended = new Date(meeting.end_time);     // Zoom does not compute meeting duration
-        started = new Date(meeting.start_time);
-        meeting.duration = (ended - started) / 1000;
-        // Double encode the meeting id so that Cosmos accepts it
-        var euuid = encodeURIComponent(encodeURIComponent(meeting.uuid));
-        //meeting.id = euuid;
-        delete meeting.id;                      // Let Azure supply an ID
-
+        const querySpec = {
+            query: query
+        };
         try {
-            const { resource: createdItem } = await container.items.create(meeting);
-            console.log("added ", createdItem);
+            const { resources: items } = await container.items  // meetings
+              .query(querySpec)
+              .fetchAll();
+            return items;
+        } 
+        catch (err) {
+            console.log(err);
+            return null
         }
-        catch(err) {
-            console.log(err.message);
-        }
-        //return meeting;
     },
-    
+
     // Sample of how to query
     getAllItems: async function () {
 
@@ -51,7 +48,7 @@ module.exports = {
             .query(querySpec)
             .fetchAll();
             
-        data = new Array();
+        var data = [];
 
         items.forEach(item => {
             data.push(item);
@@ -62,8 +59,7 @@ module.exports = {
         } catch (err) {
             console.error(err)
         }
-    },
-    
-
-
+    }
 }
+
+export default dataAccess;

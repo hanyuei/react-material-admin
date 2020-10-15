@@ -9,15 +9,33 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
-//import styles from "./Table/BasicTables/tableColumnStyle";
-import { endpoint, key, databaseId } from "../config.js";
-import { CosmosClient } from "@azure/cosmos"
-// TODO move get of summary back to data access
-//const { CosmosClient } = require("@azure/cosmos");
+import { zoomTimesShort, gbeStaff } from "../config.js";
+import dataAccess from "../dataAccess.js";
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
 
-const client = new CosmosClient({ endpoint, key });
-const database = client.database(databaseId);
-const container = database.container("meetings");
+/*
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
+
+const classes = useStyles();
+*/
 
 const dayjs = require('dayjs');
 var utc = require('dayjs/plugin/utc') // dependent on utc plugin
@@ -49,7 +67,7 @@ function GBEZoomNumber(startTimeUTC, firstReportDateUTC) {
       if ( (diff >= -5) && (diff <= 15) ) { // Meeting started 5 min early to 15 min late from scheduled time
           result.zoom = i;
       }
-      if (t.format("d") === 5 ) {  //special case of Friday
+      if (t.format("d") === "5" ) {  //special case of Friday
           if ((startTime >= 505 && (startTime <= 625 ))) { // 8:25 to 10:25
             result.zoom = 4;      // it's the Friday 8:30
             console.log("Friday zoom!");
@@ -57,7 +75,7 @@ function GBEZoomNumber(startTimeUTC, firstReportDateUTC) {
       }
   };
   result.day = dayjs(startTimeUTC).diff(firstReportDateUTC,"day");
-  console.log(result, t.format("YYYY-MM-DDTHH:mm"));
+  //console.log(result, t.format("YYYY-MM-DDTHH:mm"));
   return result;
 }
 
@@ -66,92 +84,216 @@ function createGBESummary(host, startDate, endDate, meetings) {
   console.log("reportGBEWeeklySummary");
   
   var pList = [];
+  var mList = [];
+
   const numDays =  1 + dayjs(endDate).diff(startDate, 'day');
   const startDateUTC = dayjs(startDate).utc().format("YYYY-MM-DD");
 
   // Do data transformation to show minutes spent in each available Zoom by day
-  console.log("Should have meetings");
   meetings.forEach((m) => {
       var pos = GBEZoomNumber(m.start_time, startDateUTC);
-      console.log("pos", pos, m.start_time);
+      console.log("pos", pos, m.participants.length, m.start_time);
+      m.pos = pos;
       var participants = m.participants;
+
       participants.forEach((p) => {
           var found;
           if (pList.length > 0) {
               found = pList.find((e) => e.name === p.name);
           }
-          if (found !== undefined) {
-              if (pos.zoom && pos.zoom >= 0 && pos.day && pos.day >=0 ) {
-                  if (found.days[pos.day] > 0) {
-                    console.log("WTF?");
-                  }
+          if (found) {  //It was found
+              if ((pos.zoom >= 0) && (pos.day >=0)) {
+                  //console.log(`Adding ${Math.round(p.duration / 60)} to ${pos.day} ${pos.zoom} for ${p.name} at ${m.start_time} `)
                   found.days[pos.day].zooms[pos.zoom] += p.duration / 60; // Add to number of minutes
               } else {
+                  console.log("pos off", pos);
                 // todo Handle none academic zoom meetings here
               }
           } else {
-              // Make a new paricipant with buckets for paricipation by day and Zoom number
-              p.days = new Array(numDays);
-             for (var i=0; i<p.days.length;i++){
-                  const a = [0, 0, 0, 0, 0]; 
-                  p.days[i] = {zooms: a};
-              }
-              pList.push(p);
+            // Make a new plist entry with buckets for paricipation by day and Zoom number
+            // todo remove
+            var pNew = {...p};
+            pNew.days = new Array(numDays);
+            for (var i=0; i<numDays;i++){
+                const a = [0, 0, 0, 0, 0]; 
+                pNew.days[i] = {zooms: a};
+            }
+            pNew.days[pos.day].zooms[pos.zoom] += p.duration / 60; // Add to number of minutes
+           // console.log(`New! adding ${Math.round(p.duration / 60)} to ${pos.day} ${pos.zoom} for ${pNew.name} at ${m.start_time} `)
+            pList.push(pNew);
           }
       });
   });
-  //console.log(pList);
-  return {participants: pList, numDays: numDays};       //List of participant with time in each meeting
-}
 
-async function fetchData(host, startDate, endDate) {
+  // TODO if host is not first participant, this does not work
+  const sortedParticipants = pList.slice(0, 1).concat(pList.slice(1, pList.length).sort( (a, b) => {
+    if (a.name > b.name) return 1;
+    if (b.name  > a.name) return -1;
+    return 0;
+  }));
 
-  const startDateUTC = dayjs(startDate).utc().format("YYYY-MM-DDThh:mm:ss");
-  const endDateUTC  = dayjs(endDate).utc().format("YYYY-MM-DDThh:mm:ss");
-  const querySpec = {
-      query: `SELECT * FROM meetings m WHERE m.start_time >= '${startDateUTC}' and m.end_time <= '${endDateUTC}' and startswith(m.topic, '${host}')`
-  };
-  // console.log(querySpec.query);
-  try {
-      //console.log(container.items);
-      const { resources: items } = await container.items  // meetings
-        .query(querySpec)
-        .fetchAll();
-      console.log("Retrieved meetings", items);
-      const {numDays, participants} = createGBESummary(host, startDate, endDate, items);
-      return {meetings: items, numDays: numDays, participants: participants};
-  } 
-  catch (err) {
-      console.log(err);
-      return null
-  }
-  
+  return {participants: sortedParticipants, numDays: numDays, meetingList: mList};       //List of participant with time in each meeting
 }
 
 
 class GBEZoomSummary extends React.Component {
   constructor(props) {
     super(props)
-
+    var rightNow = dayjs();
+    
     this.state = {
       meetings: [],
       participants: [],
-      host: "Rachel Gossett",
-      startDate: "2020-10-05",
-      endDate: "2020-10-09",
-      numDays: 0
+      host: "Tamara McNew",
+      startDate: "2020-10-13",
+      endDate: "2020-10-15",
+      numDays: 0,
+      meetingList: [],
+      message:"",
+      loading: true,
       }
   }
     
   async componentDidMount() {
     const {host, startDate, endDate} = this.state;
 
-    const {meetings, numDays, participants} = await fetchData(host, startDate, endDate);
-    // handle null with message
-    this.setState({...this.state, 
-      participants: participants, 
-      meetings: meetings, 
-      numDays: numDays});
+    // Create query
+    const startDateUTC = dayjs(startDate).utc().format("YYYY-MM-DDThh:mm:ss");
+    // Add 24 hours to end date to make query inclusive of end date's meetings
+    const endDateUTC  = dayjs(endDate).utc().add(1, "day").format("YYYY-MM-DDThh:mm:ss");
+    const query = `SELECT * FROM meetings m WHERE m.start_time >= '${startDateUTC}' and m.end_time <= '${endDateUTC}' and startswith(m.topic, '${host}')`
+    console.log(query);
+  
+    const meetings = await dataAccess.meetingsFetch(query);
+    
+    if (meetings) {
+      const {numDays, participants} = createGBESummary(host, startDate, endDate, meetings);
+
+      this.setState({...this.state, 
+        loading: false,
+        message: ``,
+        participants: participants,
+        meetings: meetings, 
+        numDays: numDays});
+      console.log("Num meetings", meetings && meetings.length);
+    } else {
+      this.setState({...this.state,
+        loading: false,
+        message: `Error getting data`,
+        participants: null,
+        meetings: meetings,
+        numDays: 0,
+      });
+    }
+
+  }
+
+  async componentDidUpdate(prevProps) {
+    console.log(prevProps);
+    if (prevProps.params.id !== this.props.params.id) {
+      await this.componentDidMount();
+    }
+  }
+
+
+  // Render each meeting with which scheduled session it is.
+  renderMeetingList(meetings) {
+    var rows = [];
+
+    if (meetings.length <= 0) return;
+
+    rows.push(<h2 key={1001}>Meetings</h2>);
+    rows.push(<p key={1002}></p>);
+    rows.push(<em key={1003}><p>If an instructional Zoom does not appear on this list, please contact --- </p></em>);
+  
+    // Todo render as list
+    meetings.forEach(m => {
+      const numParticipants = m.participants ? m.participants.length : 0;
+      const meetingDate = dayjs(m.start_time).tz("America/Los_Angeles").format("ddd MM-DD hh:mm");
+      const s = `${meetingDate} (${m.pos.zoom >= 0 ? zoomTimesShort[m.pos.zoom] : "other"}) ${numParticipants} participants  ID: ${m.uuid}`;
+      rows.push(<p key={m.id}>{s}</p>);
+    });
+    return rows;
+  }
+
+  renderForm() {
+    const {host, startDate, endDate} = this.state;
+
+    //const [age, setAge] = React.useState('');
+  
+    const hostChange = (event) => {
+      this.setState({...this.state, host: event.target.value});
+    };
+  
+    const startDateChange = (date) => {
+      this.setState({...this.state, startDate: dayjs(date).utc().format("YYYY-MM-DD")});
+    };
+  
+    const endDateChange = (date) => {
+      this.setState({...this.state, endDate: dayjs(date).utc().format("YYYY-MM-DD")});
+    };
+  
+    // - {host} {startDate} to {endDate}
+    var options = [];
+    gbeStaff.forEach(s => {
+      const opt = <option value={s.name}>{s.name}</option>
+      options.push(opt);
+    });
+    //todo <FormControl className={classes.formControl}>
+    return(
+      <div>
+         <Grid container justify="space-around">
+      <FormControl>
+        <InputLabel htmlFor="host-native-simple">Teacher</InputLabel>
+        <Select
+          native
+          value={host}
+          onChange={hostChange}
+          inputProps={{
+            name: 'host',
+            id: 'host-native-simple',
+          }}
+        >
+          {options}
+        </Select>
+      </FormControl>
+         <MuiPickersUtilsProvider utils={DateFnsUtils}>
+           <KeyboardDatePicker
+             disableToolbar
+             variant="inline"
+             format="yyyy-MM-dd"
+             margin="normal"
+             id="startDate"
+             label="Start Date"
+             value={startDate}
+             onChange={startDateChange}
+             autoOk={true}
+             disableFuture={true}
+             maxDate={dayjs(endDate).utc()}
+             KeyboardButtonProps={{
+               'aria-label': 'change date',
+             }}
+           />
+           <KeyboardDatePicker
+             disableToolbar
+             variant="inline"
+             format="yyyy-MM-dd"
+             margin="normal"
+             id="endDate"
+             label="End Date"
+             value={endDate}
+             onChange={endDateChange}
+             autoOk={true}
+             disableFuture={true}
+             minDate={dayjs(startDate).utc()}
+             KeyboardButtonProps={{
+               'aria-label': 'change date',
+             }}
+           />
+       </MuiPickersUtilsProvider>
+       </Grid>
+      </div>
+    )
   }
 
   renderHeadings() {
@@ -161,25 +303,36 @@ class GBEZoomSummary extends React.Component {
 
     if (numDays <= 0) return;
 
-    cols.push(<TableCell>Participant</TableCell>);
+    cols.push(<TableCell key={-1}>Participant</TableCell>);
 
     for (var d=0; d < numDays; d++) {
       const colDate = dt.add(d, 'day');
-      cols.push(<TableCell>{colDate.format("ddd")}<br/>{colDate.format("MM-DD")}</TableCell>);
+      cols.push(<TableCell key={d}>{colDate.format("ddd")}<br/>{colDate.format("MM-DD")}</TableCell>);
     }
     return cols;
   }
 
   renderParticipant(p) {
-    var dayZooms = [];
+    const {startDate} = this.state;
 
+    var dayZooms = [];
+    
     for (var d=0; d < this.state.numDays; d++) {
+      var dow = dayjs(startDate + "T00:00:00").add(d, 'day').format("ddd");
       var s = "";
-      for (var z=0; z < p.days[d].zooms.length; z++) {
-        s += Math.round(p.days[d].zooms[z]) + " ";
+      if (dow === "Fri") {
+        //Friday only has one zoom
+        s += Math.round((p.days[d].zooms[4]));
+      } else {
+        // other days
+        s = []
+        for (var z=0; z < p.days[d].zooms.length - 1; z++) {
+          //s += Math.round(p.days[d].zooms[z]) + " ";
+          s.push(<Grid>{Math.round(p.days[d].zooms[z])}</Grid>);
+        }
       }
       dayZooms.push(
-        <TableCell>{s}</TableCell>
+        <TableCell key={d}>{s}</TableCell>
       )
     }
 
@@ -197,7 +350,7 @@ class GBEZoomSummary extends React.Component {
         )
     }
   }
-
+  
   render() {
     const { host, meetings, participants, startDate, endDate } = this.state;
     console.log("State: ", this.state)
@@ -205,9 +358,7 @@ class GBEZoomSummary extends React.Component {
     return (
     <Card>
       <CardContent>
-        <Typography color="textSecondary" gutterBottom>
-          GBE Zoom Summary - {host}
-        </Typography>
+        {this.renderForm()}
         <Divider />
         <Table>
           <TableHead>
@@ -221,6 +372,7 @@ class GBEZoomSummary extends React.Component {
               ))}
           </TableBody>
         </Table>
+        {this.renderMeetingList(meetings)}
       </CardContent>
     </Card>
     );
