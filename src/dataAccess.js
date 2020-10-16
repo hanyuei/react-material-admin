@@ -1,6 +1,5 @@
 // dataAccess.js
 // Access the database on Azure, per configuration
-
 const config = require('./config');
 
 // Connect to database
@@ -17,6 +16,27 @@ dayjs.extend(timezone);
 
 const dataAccess = {
     // Return the meetings specified in query
+/*
+    function useFetch(url, opts) {
+        const [response, setResponse] = useState(null)
+        const [loading, setLoading] = useState(false)
+        const [hasError, setHasError] = useState(false)
+        useEffect(() => {
+            setLoading(true)
+            fetch(url, opts)
+                .then((res) => {
+                setResponse(res.data)
+                setLoading(false)
+            })
+                .catch(() => {
+                    setHasError(true)
+                    setLoading(false)
+                })
+        }, [ url ])
+        return [ response, loading, hasError ]
+    }
+    */
+
     meetingsFetch: async function (query) {
 
         const querySpec = {
@@ -33,6 +53,7 @@ const dataAccess = {
             return null
         }
     },
+
 
     // Sample of how to query
     getAllItems: async function () {

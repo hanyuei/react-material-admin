@@ -8,15 +8,16 @@ x Add meeting participants to database
 x Isolate data access
 x Move app to server
 x Add page for summary report
-Fix discrepency of meeting duration vs host duration
 Verify student-hosted meetings can not be found in Zoom
 List Meetings, getting participants
-Compute zoom number
-SR iterate through GBE staff, 
-Verify and find discrepency between immediate report and 15 min delayed report. Make forum post.
 Get second day until 23:59
+Meetings should be property
+Use properties where advised
+Add isloading
+Make dashboard item for meetings in progress hosted by teachers
+Remove user icon and unused menu items
 
-
+Good article about React hooks: https://blog.bitsrc.io/fetching-data-in-react-using-hooks-c6fdd71cb24a
 Good request on Postman:
  
 GET https://api.zoom.us/v2/users/mark.murphy@sultan.k12.wa.us/meetings?type=past&page_size=30
