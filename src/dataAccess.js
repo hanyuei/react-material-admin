@@ -36,20 +36,25 @@ const dataAccess = {
         return [ response, loading, hasError ]
     }
     */
+    showMe: function(p, q) {
+        console.log(p);
+        console.log(q);
+        return(p);
+    },
 
     meetingsFetch: async function (query) {
-
+        //console.log("config here", config)
         const querySpec = {
             query: query
         };
         try {
-            const { resources: items } = await container.items  // meetings
+           const { resources: items } = await container.items  // meetings
               .query(querySpec)
               .fetchAll();
             return items;
         } 
         catch (err) {
-            console.log(err);
+            console.log("Error: ", err);
             return null
         }
     },
