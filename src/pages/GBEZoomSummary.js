@@ -20,7 +20,6 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker,} from '@material-ui/picker
 import dataAccess from "../dataAccess.js";
 import Donut from "../components/Donut.js";
 
-// const config = require('../config');
 /*
 const useStyles = makeStyles((theme) => ({
   formControl: {

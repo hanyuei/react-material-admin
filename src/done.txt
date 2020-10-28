@@ -14,10 +14,8 @@ x Get second day until 23:59
 x Add isloading
 Make dashboard item for meetings in progress hosted by teachers
 x Remove user icon and unused menu items
-First meeting for Crossman is off
-Why so slow?
 Add way to summarize a student
-Error message on database errors
+Error message for database errors
 Logging of errors
 Use id, not name to identify teachers
 Use class rolls 
