@@ -55,6 +55,7 @@ const dataAccess = {
         } 
         catch (err) {
             console.log("Error: ", err);
+            //todo set error message
             return null
         }
     },

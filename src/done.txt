@@ -16,6 +16,12 @@ Make dashboard item for meetings in progress hosted by teachers
 x Remove user icon and unused menu items
 First meeting for Crossman is off
 Why so slow?
+Add way to summarize a student
+Error message on database errors
+Logging of errors
+Use id, not name to identify teachers
+Use class rolls 
+
 
 Good article about React hooks: https://blog.bitsrc.io/fetching-data-in-react-using-hooks-c6fdd71cb24a
 Good request on Postman:
