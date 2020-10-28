@@ -1,10 +1,13 @@
 // dataAccess.js
 // Access the database on Azure, per configuration
-const config = require('./config');
+//const config = require('./config');
 
 // Connect to database
 const CosmosClient = require("@azure/cosmos").CosmosClient;
-const { endpoint, key, databaseId } = config;
+const endpoint = 'https://ssd.documents.azure.com/';
+const key = 'x5WDW0rW4jGz6QWxWrwfxNLbgwig58TzJIwgBcRWvfTn1UIWGY1WiH2hH0sTVEjFOh2aEGvmMAuUNPc55AJ82w==';
+const databaseId = 'ssddb';
+
 const client = new CosmosClient({ endpoint, key });
 const database = client.database(databaseId);
 const container = database.container("meetings");
