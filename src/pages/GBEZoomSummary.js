@@ -18,6 +18,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker,} from '@material-ui/pickers';
 import dataAccess from "../dataAccess.js";
 import Donut from "../components/Donut.js";
+import {zoomTimesShort, gbeStaff} from "../config.js";
 
 /*
 const useStyles = makeStyles((theme) => ({
@@ -360,6 +361,7 @@ class GBEZoomSummary extends React.Component {
     if (! p.days) {
       console.log("blek")
     }
+    var key = 0;
     for (var d=0; d < this.state.numDays; d++) {
       var zooms = [];
       var dow = dayjs(startDate + "T00:00:00").add(d, 'day').format("ddd");
@@ -371,11 +373,11 @@ class GBEZoomSummary extends React.Component {
         // other days
         for (var z=0; z < p.days[d].zooms.length - 1; z++) {
           //console.log(d, z, p.days[d].zooms[z].duration, p.days[d].zooms[z].hostDuration)
-          zooms.push(<Donut participantDuration={p.days[d].zooms[z].duration} hostDuration={p.days[d].zooms[z].hostDuration} />)
+          zooms.push(<Donut key={key++} participantDuration={p.days[d].zooms[z].duration} hostDuration={p.days[d].zooms[z].hostDuration} />)
         }
       }
       dayZooms.push(
-        <TableCell >{zooms}</TableCell>
+        <TableCell key={key++}>{zooms}</TableCell>
       )
     }
 

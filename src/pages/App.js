@@ -16,6 +16,8 @@ import GBEZoomSummary from "./GBEZoomSummary";
 import NotFound from "./NotFoundPage";
 import { ThemeProvider } from "@material-ui/core/styles";
 import defaultTheme, { customTheme } from "../theme";
+require('dotenv').config({path: __dirname + '.env'})
+console.log("index", process.env, __dirname + '.env');
 
 const styles = () => ({
   container: {

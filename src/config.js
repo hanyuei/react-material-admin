@@ -1,9 +1,9 @@
 // store the credential variables in .env file and retrieve the values here.
 
-const dotenv = require('dotenv');
+//require("dotenv").config();
+
 //TODO probably not working
-dotenv.config();
-console.log('Process.env', process.env);
+//console.log('Process.env', process.env);
 // @ts-check
 
 module.exports= {
