@@ -20,7 +20,7 @@ Logging of errors
 Use id, not name to identify teachers
 Use class rolls 
 Tear hair out
-
+Possible to run production server locally?
 
 Good article about React hooks: https://blog.bitsrc.io/fetching-data-in-react-using-hooks-c6fdd71cb24a
 Good request on Postman:

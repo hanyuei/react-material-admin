@@ -54,6 +54,7 @@ function durationFormat(duration) {
 
 // Return the bucket positions for the meeting at startTimeUTC
 function GBEZoomNumber(startTimeUTC, firstReportDateUTC) {
+  console.log("process.env in gbgsum", process.env)
   var result = {day: -1, zoom: -1};
   const t = dayjs(startTimeUTC).tz("America/Los_Angeles");     //Local 
   const startTime = (t.hour() * 60) + (t.minute());    // in minutes from midnight
@@ -368,7 +369,7 @@ class GBEZoomSummary extends React.Component {
       
       if (dow === "Fri") {
         //Friday only has one zoom
-        zooms.push(<Donut participantDuration={p.days[d].zooms[4].duration} hostDuration={p.days[d].zooms[4].hostDuration} />)
+        zooms.push(<Donut key={key++} participantDuration={p.days[d].zooms[4].duration} hostDuration={p.days[d].zooms[4].hostDuration} />)
       } else {
         // other days
         for (var z=0; z < p.days[d].zooms.length - 1; z++) {
