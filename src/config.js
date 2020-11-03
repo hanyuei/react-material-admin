@@ -8,10 +8,10 @@
 
 module.exports= {
 
-  NODE_ENV: process.env.NODE_ENV || 'development',
-  HOST: process.env.HOST || '127.0.0.1',
-  PORT: process.env.PORT || 3000,
-  /*
+  //NODE_ENV: process.env.NODE_ENV || 'development',
+  //HOST: process.env.HOST || '127.0.0.1',
+  //PORT: process.env.PORT || 3000,
+  /* todo Use REACT_APP_ prefix
   DB_ENDPOINT: process.env.DB_ENDPOINT,
   DB_KEY: process.env.DB_KEY,
   DB_DATABASE_ID: process.env.DB_DATABASE_ID,

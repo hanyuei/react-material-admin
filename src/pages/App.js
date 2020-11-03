@@ -9,18 +9,14 @@ import RightDrawer from "../components/RightDrawer";
 import Data from "../data";
 import Dashboard from "./DashboardPage";
 import ButtonBase from "@material-ui/core/ButtonBase";
-//import Form from "./FormPage";
-//import BasicTable from "./Table/BasicTables";
-//import DataTable from "./Table/DataTables";
 import GBEZoomSummary from "./GBEZoomSummary";
 import NotFound from "./NotFoundPage";
 import { ThemeProvider } from "@material-ui/core/styles";
 import defaultTheme, { customTheme } from "../theme";
-/*
-require('dotenv').config({path: __dirname + '.env'})
-//why no work?
-console.log("index", process.env, __dirname + '.env');
-*/
+const dotenv = require('dotenv');
+const envConfig = dotenv.config({path: __dirname + '.env', debug: true });
+
+console.log("index", process.env, envConfig);
 
 const styles = () => ({
   container: {
