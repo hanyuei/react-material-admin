@@ -1,18 +1,21 @@
 import React from "react";
 import Faker from "faker";
 import Assessment from "@material-ui/icons/Assessment";
-import GridOn from "@material-ui/icons/GridOn";
-import PermIdentity from "@material-ui/icons/PermIdentity";
-import Web from "@material-ui/icons/Web";
-import BorderClear from "@material-ui/icons/BorderClear";
+//import GridOn from "@material-ui/icons/GridOn";
+//import PermIdentity from "@material-ui/icons/PermIdentity";
+//import Web from "@material-ui/icons/Web";
+//import BorderClear from "@material-ui/icons/BorderClear";
 import BorderOuter from "@material-ui/icons/BorderOuter";
 
 const data = {
   menus: [
     { text: "DashBoard", icon: <Assessment />, link: "/dashboard" },
+    { text: "GBE Zoom Summary", icon: <BorderOuter />, link: "/reports/gbezoomsummary" },
+    /*
     { text: "Form Page", icon: <Web />, link: "/form" },
+    
     {
-      text: "Table Page",
+      text: "A Table Page",
       icon: <GridOn />,
       // link: "/table",
       subMenus: [
@@ -29,6 +32,7 @@ const data = {
       ]
     },
     { text: "Login Page", icon: <PermIdentity />, link: "/login" }
+    */
   ],
   user: {
     userName: `${Faker.name.firstName()} ${Faker.name.lastName()}`,
@@ -43,39 +47,27 @@ const data = {
     }))
   },
   dashBoardPage: {
-    recentProducts: [
+    chronicAbsence: [
       {
         id: 1,
-        title: "Samsung TV",
-        text: "Samsung 32 1080p 60Hz LED Smart HDTV."
+        title: "J. Smith",
+        text: "Last engaged: 10/01/2020"
       },
-      { id: 2, title: "Playstation 4", text: "PlayStation 3 500 GB System" },
+      { id: 2, title: "S. Pipps", 
+        text: "Last engaged: 10/20/2020" },
       {
         id: 3,
-        title: "Apple iPhone 6",
-        text: "Apple iPhone 6 Plus 16GB Factory Unlocked GSM 4G "
+        title: "W. Slate",
+        text: "Last engaged: never"
       },
-      {
-        id: 4,
-        title: "Apple MacBook",
-        text: "Apple MacBook Pro MD101LL/A 13.3-Inch Laptop"
-      }
     ],
-    monthlySales: [
-      { name: "Jan", uv: 3700 },
-      { name: "Feb", uv: 3000 },
-      { name: "Mar", uv: 2000 },
-      { name: "Apr", uv: 2780 },
-      { name: "May", uv: 2000 },
-      { name: "Jun", uv: 1800 },
-      { name: "Jul", uv: 2600 },
-      { name: "Aug", uv: 2900 },
-      { name: "Sep", uv: 3500 },
-      { name: "Oct", uv: 3000 },
-      { name: "Nov", uv: 2400 },
-      { name: "Dec", uv: 2780 }
+    dayPeriod: [
+      { name: "8:30", uv: 3700 },
+      { name: "9:30", uv: 3000 },
+      { name: "13:30", uv: 2000 },
+      { name: "14:30", uv: 2780 },
     ],
-    newOrders: [
+    engagementByDay: [
       { pv: 2400 },
       { pv: 1398 },
       { pv: 9800 },
@@ -84,11 +76,6 @@ const data = {
       { pv: 3490 },
       { pv: 4300 }
     ],
-    browserUsage: [
-      { name: "Chrome", value: 800 },
-      { name: "Firefox", value: 300 },
-      { name: "Safari", value: 300 }
-    ]
   }
 };
 

@@ -1,0 +1,27 @@
+x Fix start up short cut. Use npm start, not node start in package.json
+x Changed name of app
+x Put app in github - dealt with keychain issue
+x Delayed participant request working
+x Azure DB created
+x Add meeting details to database
+x Add meeting participants to database
+x Isolate data access
+x Move app to server
+x Add page for summary report
+Verify student-hosted meetings can not be found in Zoom
+List Meetings, show actual participant count
+x Get second day until 23:59
+x Add isloading
+Make dashboard item for meetings in progress hosted by teachers
+x Remove user icon and unused menu items
+Add way to summarize a student
+Error message for database errors
+Logging of errors
+Use id, not name to identify teachers
+Use class rolls 
+Tear hair out
+Possible to run production server locally?
+
+Good article about React hooks: https://blog.bitsrc.io/fetching-data-in-react-using-hooks-c6fdd71cb24a
+Good request on Postman:
+ 
