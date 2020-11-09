@@ -24,7 +24,7 @@ module.exports= {
     {name: 'Carlene Crossman', grade: "5", course: "Science", meeting_id: '4682427828'},
     {name: 'David Monson', grade: "C", meeting_id: '5676717067'},
     {name: 'Gail Bowers', grade: "Music", meeting_id: '2225508614'},
-    {name: 'Kimberly Skadan', grade: "5", meeting_id: '9887799526'},
+    {name: 'Kim Skadan', grade: "5", meeting_id: '9887799526'},
     {name: 'Leslie Best', grade: "5", course: "ELA", meeting_id: '6887151159'},
     {name: 'Leslie Neville', grade: "3", meeting_id: '3798415486'},
     {name: 'Lacey Blue', grade: "P", meeting_id: '9770935917'},

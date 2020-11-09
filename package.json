@@ -27,7 +27,7 @@
     "zoomapi": "^1.2.1"
   },
   "scripts": {
-    "start": "react-scripts start",  
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test:ci": "CI=true react-scripts test --env=jsdom",
@@ -54,6 +54,5 @@
     "node-sass": "^4.9.4",
     "prettier": "^1.14.3",
     "prettier-eslint": "^8.8.2"
-  },
-  "homepage": "https://mobitinker.github.io/engagement-tracker"
+  }
 }
