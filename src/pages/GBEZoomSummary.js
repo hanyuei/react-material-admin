@@ -40,21 +40,8 @@ var timezone = require('dayjs/plugin/timezone')
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
-
-
-/*
-// Return duration as "134 m"
-function durationFormat(duration) {
-  //var hours = Math.floor(duration / 3600).toString();
-  //var minutes = Math.floor((duration % 3600) / 60).toString();
-  //return hours+"h " + minutes + "m";
-  return Math.floor((duration / 60).toString() + "m");
-}
-*/
-
 // Return the bucket positions for the meeting at startTimeUTC
 function GBEZoomNumber(startTimeUTC, firstReportDateUTC) {
-  console.log("process.env in gbgsum", process.env)
   var result = {day: -1, zoom: -1};
   const t = dayjs(startTimeUTC).tz("America/Los_Angeles");     //Local 
   const startTime = (t.hour() * 60) + (t.minute());    // in minutes from midnight
@@ -71,7 +58,6 @@ function GBEZoomNumber(startTimeUTC, firstReportDateUTC) {
       if (t.format("d") === "5" ) {  //special case of Friday
           if ((startTime >= 505 && (startTime <= 625 ))) { // 8:25 to 10:25
             result.zoom = 4;      // it's the Friday 8:30
-            console.log("Friday zoom!");
           }
       }
   };
@@ -93,7 +79,6 @@ function createGBESummary(host, startDate, endDate, meetings) {
       var hostDuration = m.participants[0].duration;
 
       var pos = GBEZoomNumber(m.start_time, startDateUTC);
-      //console.log("pos", pos, m.participants.length, m.start_time);
       m.pos = pos;
       var participants = m.participants;
 
@@ -105,8 +90,10 @@ function createGBESummary(host, startDate, endDate, meetings) {
               found = pList.find((e) => e.name === p.name);
           }
           if (found) {  //It was found
+              //TODO refactor
               found.days[pos.day].zooms[pos.zoom].duration += p.duration; // Add to number of minutes
-              found.days[pos.day].zooms[pos.zoom].hostDuration = hostDuration; // Add to number of minutes
+              found.days[pos.day].zooms[pos.zoom].hostDuration = hostDuration; // Set host duration 
+              found.days[pos.day].zooms[pos.zoom].joins += 1; 
           } else {
             // Make a new plist entry with buckets for paricipation by day and Zoom number
             if (p.duration > 90) {
@@ -114,16 +101,18 @@ function createGBESummary(host, startDate, endDate, meetings) {
               pNew.days = new Array(numDays);
               for (var i=0; i<numDays;i++){
                   const a = [
-                    {duration: 0, hostDuration: -1},
-                    {duration: 0, hostDuration: -1},
-                    {duration: 0, hostDuration: -1},
-                    {duration: 0, hostDuration: -1},
-                    {duration: 0, hostDuration: -1},
+                    // item for each possible Zoom in GBE day
+                    {duration: 0, hostDuration: -1, joins: 0},
+                    {duration: 0, hostDuration: -1, joins: 0},
+                    {duration: 0, hostDuration: -1, joins: 0},
+                    {duration: 0, hostDuration: -1, joins: 0},
+                    {duration: 0, hostDuration: -1, joins: 0},
                   ]; 
                   pNew.days[i] = {zooms: a};
               }
               pNew.days[pos.day].zooms[pos.zoom].duration += p.duration; // Add to number of minutes
-              pNew.days[pos.day].zooms[pos.zoom].hostDuration = hostDuration; // Add to number of minutes
+              pNew.days[pos.day].zooms[pos.zoom].hostDuration = hostDuration; // Set host duration 
+              pNew.days[pos.day].zooms[pos.zoom].joins += 1; 
               pList.push(pNew);
             } 
           }
@@ -161,7 +150,11 @@ function createGBESummary(host, startDate, endDate, meetings) {
     }
   });
 
-  return {participants: sortedParticipants, numDays: numDays};       //List of participant with time in each meeting
+  // return:
+  // List of participants in host's with time in each meeting
+  // Number of days in range
+  // Updated meetings
+  return {participants: sortedParticipants, numDays: numDays, meetings: meetings};       
 }
 
 
@@ -217,7 +210,6 @@ class GBEZoomSummary extends React.Component {
   }
 
   async componentDidUpdate(prevProps, prevState) {
-    //console.log(prevState, this.state)
     if ( (this.state.host === prevState.host) &&
          (this.state.startDate === prevState.startDate) &&
          (this.state.endDate === prevState.endDate)) {
@@ -236,14 +228,13 @@ class GBEZoomSummary extends React.Component {
 
     rows.push(<h2 key={1001}>Meetings</h2>);
     rows.push(<p key={1002}></p>);
-    rows.push(<em key={1003}><p>If an instructional Zoom does not appear on this list, please contact Mark </p></em>);
+    rows.push(<em key={1003}><p>All meetings hosted, with (est. class time) and duration for host.</p></em>);
   
     // Todo render as list
     meetings.forEach(m => {
-      const numParticipants = m.participants ? m.participants.length : 0;
       const meetingDate = dayjs(m.start_time).tz("America/Los_Angeles").format("ddd MM-DD hh:mm");
       const duration = Math.round(m.duration / 60);
-      const s = `${meetingDate} (${m.pos.zoom >= 0 ? zoomTimesShort[m.pos.zoom] : "other"}) ${numParticipants} participants for ${duration}m`;
+      const s = `${meetingDate} (${m.pos.zoom >= 0 ? zoomTimesShort[m.pos.zoom] : "other"}) for ${duration}m`;
       rows.push(<p key={m.id}>{s}</p>);
     });
     return rows;
@@ -359,9 +350,6 @@ class GBEZoomSummary extends React.Component {
     
     var dayZooms=[];
 
-    if (! p.days) {
-      console.log("blek")
-    }
     var key = 0;
     for (var d=0; d < this.state.numDays; d++) {
       var zooms = [];
@@ -373,7 +361,6 @@ class GBEZoomSummary extends React.Component {
       } else {
         // other days
         for (var z=0; z < p.days[d].zooms.length - 1; z++) {
-          //console.log(d, z, p.days[d].zooms[z].duration, p.days[d].zooms[z].hostDuration)
           zooms.push(<Donut key={key++} participantDuration={p.days[d].zooms[z].duration} hostDuration={p.days[d].zooms[z].hostDuration} />)
         }
       }

@@ -8,19 +8,20 @@ x Add meeting participants to database
 x Isolate data access
 x Move app to server
 x Add page for summary report
-Verify student-hosted meetings can not be found in Zoom
-List Meetings, show actual participant count
 x Get second day until 23:59
 x Add isloading
-Make dashboard item for meetings in progress hosted by teachers
 x Remove user icon and unused menu items
-Add way to summarize a student
+
+Verify student-hosted meetings can not be found in Zoom
+Make dashboard item for meetings in progress hosted by teachers
 Error message for database errors
 Logging of errors
-Use id, not name to identify teachers
+Use id, not name to identify teachers, students
 Use class rolls 
-Tear hair out
-Possible to run production server locally?
+Monson's does 2 zooms on Friday.  8:30 and 9:30
+Use student ID to match up bad names
+5th grade split
+Student history
 
 Good article about React hooks: https://blog.bitsrc.io/fetching-data-in-react-using-hooks-c6fdd71cb24a
 Good request on Postman:

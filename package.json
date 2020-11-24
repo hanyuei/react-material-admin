@@ -1,6 +1,7 @@
 {
   "name": "engagement-tracker",
   "version": "3.0.0",
+  "homepage": "https://proud-smoke-0ba8c121e.azurestaticapps.net/",
   "dependencies": {
     "@azure/cosmos": "^3.9.2",
     "@date-io/date-fns": "^1.3.13",
